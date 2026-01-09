@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>elrubiusOMG - YouTube</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header de YouTube -->
+    <div id="yt-masthead">
+        <div class="yt-masthead-content">
+            <div class="yt-logo"></div>
+            <form id="masthead-search">
+                <input type="text" id="masthead-search-term" placeholder="">
+                <button type="button" id="search-btn">Search</button>
+            </form>
+            <div class="masthead-right-btns">
+                <button class="upload-btn">Upload</button>
+                <button class="signin-btn">Sign in</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Banner del Canal -->
+    <div class="channel-banner-wrapper">
+        <div class="channel-info-overlay">
+            <div class="channel-info-content">
+                <div class="channel-avatar">
+                    <img src="img/gato.jpg" alt="elrubiusOMG">
+                </div>
+                <div class="channel-title-section">
+                    <h1 class="channel-title">elrubiusOMG</h1>
+                    <button class="subscribe-channel-btn">
+                        <span>▶</span> Subscribe
+                    </button>
+                    <span class="subscribe-count">1,372,376</span>
+                </div>
+                <div class="channel-stats-header">
+                    <div><span class="stat-number">1,372,697</span> subscribers</div>
+                    <div><span class="stat-number">167,820,721</span> video views</div>
+                </div>
+            </div>
+        </div>
+        <div class="channel-nav">
+            <div class="channel-nav-content">
+                <div class="channel-tabs">
+                    <div class="channel-tab active">Featured</div>
+                    <div class="channel-tab">Browse videos</div>
+                </div>
+                <input type="text" class="channel-search" placeholder="Search Channel">
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        
+        <!-- Contenido de Featured -->
+        <div id="featured-content" class="featured-wrapper">
+            <div class="featured-layout">
+            
+            <!-- Columna Izquierda - Video Principal -->
+            <div class="featured-left">
+                <!-- Reproductor de Video -->
+                <div class="video-player-container">
+                    <iframe 
+                        frameborder="0" 
+                        type="text/html" 
+                        src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                        width="100%" 
+                        height="100%" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                
+                <!-- Información del Video -->
+                <div class="video-info-wrapper">
+                    <h1 class="video-title">i Troll you With Love</h1>
+                    
+                    <div class="video-meta">
+                        <div class="uploader-info">
+                            <div class="uploader-avatar">
+                                <img src="img/gato.jpg" alt="elrubiusOMG">
+                            </div>
+                            <div class="uploader-details">
+                                <a href="#" class="uploader-name">elrubiusOMG</a>
+                                <button class="subscribe-btn">Subscribe 1,377,583</button>
+                            </div>
+                        </div>
+                        
+                        <div class="video-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">967,820,971</span> views
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="video-actions">
+                        <button class="action-btn">👍 Like</button>
+                        <button class="action-btn">👎 Dislike</button>
+                        <button class="action-btn">Add to</button>
+                        <button class="action-btn">Share</button>
+                        <button class="action-btn">More</button>
+                    </div>
+                </div>
+
+                <!-- Sección de Videos Subidos -->
+                <div class="uploaded-section">
+                    <h2 class="section-header">Uploaded videos</h2>
+                    <div class="uploaded-videos-grid">
+                        <div class="uploaded-video-item">
+                            <div class="uploaded-video-thumb">
+                                <div class="video-duration">7:05</div>
+                            </div>
+                            <div class="uploaded-video-title">Title here</div>
+                            <div class="uploaded-video-meta">by User • 1 year ago</div>
+                        </div>
+                        <div class="uploaded-video-item">
+                            <div class="uploaded-video-thumb">
+                                <div class="video-duration">5:24</div>
+                            </div>
+                            <div class="uploaded-video-title">Title here</div>
+                            <div class="uploaded-video-meta">by User • 2 years ago</div>
+                        </div>
+                        <div class="uploaded-video-item">
+                            <div class="uploaded-video-thumb">
+                                <div class="video-duration">10:15</div>
+                            </div>
+                            <div class="uploaded-video-title">Title here</div>
+                            <div class="uploaded-video-meta">by User • 3 years ago</div>
+                        </div>
+                        <div class="uploaded-video-item">
+                            <div class="uploaded-video-thumb">
+                                <div class="video-duration">8:32</div>
+                            </div>
+                            <div class="uploaded-video-title">Title here</div>
+                            <div class="uploaded-video-meta">by User • 4 years ago</div>
+                        </div>
+                        <div class="uploaded-video-item">
+                            <div class="uploaded-video-thumb">
+                                <div class="video-duration">12:45</div>
+                            </div>
+                            <div class="uploaded-video-title">Title here</div>
+                            <div class="uploaded-video-meta">by User • 1 year ago</div>
+                        </div>
+                        <div class="uploaded-video-item">
+                            <div class="uploaded-video-thumb">
+                                <div class="video-duration">6:18</div>
+                            </div>
+                            <div class="uploaded-video-title">Title here</div>
+                            <div class="uploaded-video-meta">by User • 2 years ago</div>
+                        </div>
+                        <div class="uploaded-video-item">
+                            <div class="uploaded-video-thumb">
+                                <div class="video-duration">9:27</div>
+                            </div>
+                            <div class="uploaded-video-title">Title here</div>
+                            <div class="uploaded-video-meta">by User • 3 years ago</div>
+                        </div>
+                        <div class="uploaded-video-item">
+                            <div class="uploaded-video-thumb">
+                                <div class="video-duration">11:03</div>
+                            </div>
+                            <div class="uploaded-video-title">Title here</div>
+                            <div class="uploaded-video-meta">by User • 4 years ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna Derecha - Sidebar -->
+            <div class="featured-right">
+                
+                <!-- About this video -->
+                <div class="sidebar-module">
+                    <div class="sidebar-module-header">About i Troll you With Love</div>
+                    <div class="sidebar-module-content">
+                        <div class="about-text">
+                            Gayplays sin sentido y trolleadas everywhere. Yepp.<br><br>
+                            Soy elrubius. Tengo 23,4 años. Me gustan los videojuegos, los dinosaurios y comer pan de pipas cuando nadie me esta mirando.
+                        </div>
+                        <div class="social-links">
+                            <a href="#" class="social-link" style="color: #00acee;">🐦 Twittah</a>
+                            <a href="#" class="social-link" style="color: #3b5998;">📘 Feisbuk</a>
+                        </div>
+                        <ul class="about-stats">
+                            <li><span>by elrubiusOMG</span></li>
+                            <li><span>Date Joined</span> <strong>Dec 19, 2011</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Videos Relacionados -->
+                <div class="sidebar-module">
+                    <div class="sidebar-module-header">Related Videos</div>
+                    <div class="sidebar-module-content">
+                        <div class="related-video">
+                            <div class="related-video-thumb">
+                                <div class="video-duration">7:05</div>
+                            </div>
+                            <div class="related-video-info">
+                                <div class="related-video-title">Title video related</div>
+                                <div class="related-video-author">by Username</div>
+                                <div class="related-video-stats">1M views</div>
+                            </div>
+                        </div>
+                        <div class="related-video">
+                            <div class="related-video-thumb">
+                                <div class="video-duration">5:24</div>
+                            </div>
+                            <div class="related-video-info">
+                                <div class="related-video-title">Another video title here</div>
+                                <div class="related-video-author">by Username</div>
+                                <div class="related-video-stats">500K views</div>
+                            </div>
+                        </div>
+                        <div class="related-video">
+                            <div class="related-video-thumb">
+                                <div class="video-duration">10:15</div>
+                            </div>
+                            <div class="related-video-info">
+                                <div class="related-video-title">Yet another video</div>
+                                <div class="related-video-author">by Username</div>
+                                <div class="related-video-stats">2M views</div>
+                            </div>
+                        </div>
+                        <div class="related-video">
+                            <div class="related-video-thumb">
+                                <div class="video-duration">8:32</div>
+                            </div>
+                            <div class="related-video-info">
+                                <div class="related-video-title">More videos to watch</div>
+                                <div class="related-video-author">by Username</div>
+                                <div class="related-video-stats">750K views</div>
+                            </div>
+                        </div>
+                        <div class="related-video">
+                            <div class="related-video-thumb">
+                                <div class="video-duration">12:45</div>
+                            </div>
+                            <div class="related-video-info">
+                                <div class="related-video-title">Continue watching videos</div>
+                                <div class="related-video-author">by Username</div>
+                                <div class="related-video-stats">3M views</div>
+                            </div>
+                        </div>
+                        <div class="related-video">
+                            <div class="related-video-thumb">
+                                <div class="video-duration">6:18</div>
+                            </div>
+                            <div class="related-video-info">
+                                <div class="related-video-title">Video number six</div>
+                                <div class="related-video-author">by Username</div>
+                                <div class="related-video-stats">1.5M views</div>
+                            </div>
+                        </div>
+                        <div class="related-video">
+                            <div class="related-video-thumb">
+                                <div class="video-duration">9:27</div>
+                            </div>
+                            <div class="related-video-info">
+                                <div class="related-video-title">Lucky number seven</div>
+                                <div class="related-video-author">by Username</div>
+                                <div class="related-video-stats">900K views</div>
+                            </div>
+                        </div>
+                        <div class="related-video">
+                            <div class="related-video-thumb">
+                                <div class="video-duration">11:03</div>
+                            </div>
+                            <div class="related-video-info">
+                                <div class="related-video-title">Eighth video entry</div>
+                                <div class="related-video-author">by Username</div>
+                                <div class="related-video-stats">2.5M views</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </div>
+
+        <!-- Contenido de Browse Videos -->
+        <div id="browse-videos-content" style="display: none;">
+            <!-- Sub navegación Browse Videos -->
+            <div class="browse-subnav">
+                <div class="browse-subtabs">
+                    <div class="browse-subtab active">Uploads</div>
+                    <div class="browse-subtab">Playlists</div>
+                    <div class="browse-subtab">More ▼</div>
+                    <div class="browse-subtab">Feed</div>
+                    <div class="browse-subtab">Comments</div>
+                </div>
+                <div class="view-selector">
+                    <select>
+                        <option>View</option>
+                        <option>List view</option>
+                        <option>Grid view</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="content-layout">
+                <!-- Grid de videos -->
+                <div class="browse-videos-grid">
+                    <div class="browse-video-item">
+                        <div class="browse-video-thumb">
+                            <div class="video-duration">7:05</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">Meet The Rubius | RELAJAD LAS TETAS</div>
+                            <div class="browse-video-stats">252,212 views</div>
+                            <div class="browse-video-date">1 day ago</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item">
+                        <div class="browse-video-thumb">
+                            <div class="video-duration">12:45</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">Paranormal | ACOSO DE FANTASMAS</div>
+                            <div class="browse-video-stats">1,171,445 views</div>
+                            <div class="browse-video-date">5 days ago</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item">
+                        <div class="browse-video-thumb">
+                            <div class="video-duration">8:35</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">EL FURBY DEL INFIERNO</div>
+                            <div class="browse-video-stats">2,083,048 views</div>
+                            <div class="browse-video-date">1 week ago</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item">
+                        <div class="browse-video-thumb">
+                            <div class="video-duration">11:57</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">Scribblenauts | NO LE TOQUES LAS...</div>
+                            <div class="browse-video-stats">1,209,000 views</div>
+                            <div class="browse-video-date">1 week ago</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item">
+                        <div class="browse-video-thumb">
+                            <div class="video-duration">5:08</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">DRAW MY LIFE | by elrubius</div>
+                            <div class="browse-video-stats">2,056,279 views</div>
+                            <div class="browse-video-date">2 weeks ago</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item">
+                        <div class="browse-video-thumb">
+                            <div class="video-duration">13:18</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">Sims 3 | HIJOS, HIJOS OJEJOS Y ...</div>
+                            <div class="browse-video-stats">915,516 views</div>
+                            <div class="browse-video-date">2 weeks ago</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item">
+                        <div class="browse-video-thumb">
+                            <div class="video-duration">4:32</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">Trolls en League of Legends | QLA...</div>
+                            <div class="browse-video-stats">921,025 views</div>
+                            <div class="browse-video-date">3 weeks ago</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item">
+                        <div class="browse-video-thumb">
+                            <div class="video-duration">11:40</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">Scribblenauts | MENDIGOS Y ONKI...</div>
+                            <div class="browse-video-stats">1,083,607 views</div>
+                            <div class="browse-video-date">3 weeks ago</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item">
+                        <div class="browse-video-thumb">
+                            <div class="video-duration">10:53</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">SUPER ULTRA MEGA EPIC ESPECIAL...</div>
+                            <div class="browse-video-stats">1,957,779 views</div>
+                            <div class="browse-video-date">1 month ago</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item">
+                        <div class="browse-video-thumb">
+                            <div class="video-duration">13:19</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">Slender The Arrival | EL JUEGO D...</div>
+                            <div class="browse-video-stats">900,012 views</div>
+                            <div class="browse-video-date">1 month ago</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item">
+                        <div class="browse-video-thumb">
+                            <div class="video-duration">7:11</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">GTA IV RANDOM | SPIDERMAN Y SU...</div>
+                            <div class="browse-video-stats">1,322,200 views</div>
+                            <div class="browse-video-date">1 month ago</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item">
+                        <div class="browse-video-thumb">
+                            <div class="video-duration">12:08</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">Meet The Rubius | VIRGEN EN LA ...</div>
+                            <div class="browse-video-stats">1,204,597 views</div>
+                            <div class="browse-video-date">1 month ago</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar derecho -->
+                <div class="browse-sidebar">
+                    <!-- About section -->
+                    <div class="sidebar-module">
+                        <div class="sidebar-module-header">About i Troll you With Love</div>
+                        <div class="sidebar-module-content">
+                            <div class="about-text">
+                                Gayplays sin sentido y trolleadas everywhere. Yepp.<br><br>
+                                Soy elrubius. Tengo 23,4 años. Me gustan los videojuegos, los dinosaurios y comer pan de pipas cuando nadie me esta mirando.
+                            </div>
+                            <div class="social-links">
+                                <a href="#" class="social-link" style="color: #00acee;">🐦 Twittah</a>
+                                <a href="#" class="social-link" style="color: #3b5998;">📘 Feisbuk</a>
+                            </div>
+                            <ul class="about-stats">
+                                <li><span>by elrubiusOMG</span></li>
+                                <li><span>Date Joined</span> <strong>Dec 19, 2011</strong></li>
+                                <li><span>Country</span> <strong>Spain</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Canales Anales -->
+                    <div class="sidebar-module">
+                        <div class="sidebar-module-header">Canales Anales</div>
+                        <div class="sidebar-module-content">
+                            <div class="channel-item">
+                                <div class="channel-thumb"></div>
+                                <div class="channel-info">
+                                    <div class="channel-name">Canal secundario de elRabos</div>
+                                    <div class="channel-subs">328,491 subscribers</div>
+                                </div>
+                            </div>
+                            <div class="channel-item">
+                                <div class="channel-thumb"></div>
+                                <div class="channel-info">
+                                    <div class="channel-name">Mangel</div>
+                                    <div class="channel-subs">480,497 subscribers</div>
+                                </div>
+                            </div>
+                            <div class="channel-item">
+                                <div class="channel-thumb"></div>
+                                <div class="channel-info">
+                                    <div class="channel-name">i EDDISPLAY i All your base a...</div>
+                                    <div class="channel-subs">181,067 subscribers</div>
+                                </div>
+                            </div>
+                            <div class="channel-item">
+                                <div class="channel-thumb"></div>
+                                <div class="channel-info">
+                                    <div class="channel-name">Sr.Cheeto</div>
+                                    <div class="channel-subs">180,803 subscribers</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
