@@ -5,15 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>elrubiusOMG - YouTube</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="js/video-loader.js"></script>
 </head>
 <body>
+
+    <!-- Pantalla de Contraseña -->
+    <div id="password-screen">
+        <div class="password-container">
+            <div class="password-logo">🔒</div>
+            <h1 class="password-title">Acceso Restringido</h1>
+            <p class="password-subtitle">Introduce la contraseña para continuar</p>
+            <form id="password-form">
+                <input type="password" id="password-input" placeholder="Contraseña" autocomplete="off">
+                <button type="submit" class="password-submit">Entrar</button>
+            </form>
+            <div id="password-error" class="password-error"></div>
+        </div>
+    </div>
+
+    <!-- Contenido Principal (oculto inicialmente) -->
+    <div id="main-content" style="display: none;">
 
     <!-- Header de YouTube -->
     <div id="yt-masthead">
         <div class="yt-masthead-content">
             <div class="yt-logo"></div>
             <form id="masthead-search">
-                <input type="text" id="masthead-search-term" placeholder="">
+                <input type="text" id="masthead-search-term" placeholder="Buscar videos...">
                 <button type="button" id="search-btn">Search</button>
             </form>
             <div class="masthead-right-btns">
@@ -49,7 +68,6 @@
                     <div class="channel-tab active">Featured</div>
                     <div class="channel-tab">Browse videos</div>
                 </div>
-                <input type="text" class="channel-search" placeholder="Search Channel">
             </div>
         </div>
     </div>
@@ -63,20 +81,22 @@
             <!-- Columna Izquierda - Video Principal -->
             <div class="featured-left">
                 <!-- Reproductor de Video -->
-                <div class="video-player-container">
-                    <iframe 
-                        frameborder="0" 
-                        type="text/html" 
-                        src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                        width="100%" 
-                        height="100%" 
-                        allowfullscreen>
-                    </iframe>
+                <div class="video-player-container" style="position: relative; background: #000; cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c02123c01d7d62015ff7b/', '_blank', 'width=1280,height=720')">
+                    <img src="img/gato.jpg" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.4;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: center;">
+                        <div style="text-align: center;">
+                            <div style="background: rgba(204, 24, 30, 0.9); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+                                <span style="font-size: 36px; color: white; margin-left: 5px;">▶</span>
+                            </div>
+                            <div style="color: white; font-size: 16px; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Click para reproducir</div>
+                            <div style="color: #ddd; font-size: 12px; margin-top: 5px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Se abrirá en nueva ventana</div>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Información del Video -->
                 <div class="video-info-wrapper">
-                    <h1 class="video-title">i Troll you With Love</h1>
+                    <h1 class="video-title">El Reto De La Canela Es Para Vagiinas</h1>
                     
                     <div class="video-meta">
                         <div class="uploader-info">
@@ -109,61 +129,69 @@
                 <div class="uploaded-section">
                     <h2 class="section-header">Uploaded videos</h2>
                     <div class="uploaded-videos-grid">
-                        <div class="uploaded-video-item">
+                        <div class="uploaded-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c02123c01d7d62015ff7b/', '_blank', 'width=1280,height=720')">
                             <div class="uploaded-video-thumb">
-                                <div class="video-duration">7:05</div>
+                                <img src="img/thumbnails/El Reto De La Canela Es Para Vag_nas.jpg" alt="El Reto De La Canela">
+                                <div class="video-duration">4:08</div>
                             </div>
-                            <div class="uploaded-video-title">Title here</div>
-                            <div class="uploaded-video-meta">by User • 1 year ago</div>
+                            <div class="uploaded-video-title">El Reto De La Canela Es Para Vagiinas</div>
+                            <div class="uploaded-video-meta">by elrubiusOMG • 18/08/2012</div>
                         </div>
-                        <div class="uploaded-video-item">
+                        <div class="uploaded-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c0198676329215a8debbd/', '_blank', 'width=1280,height=720')">
                             <div class="uploaded-video-thumb">
-                                <div class="video-duration">5:24</div>
+                                <img src="img/thumbnails/desert-eagle.jpg" alt="Desert Eagle">
+                                <div class="video-duration">0:07</div>
                             </div>
-                            <div class="uploaded-video-title">Title here</div>
-                            <div class="uploaded-video-meta">by User • 2 years ago</div>
+                            <div class="uploaded-video-title">After Effects - Desert Eagle First Test</div>
+                            <div class="uploaded-video-meta">by elrubiusOMG • 22/08/2011</div>
                         </div>
-                        <div class="uploaded-video-item">
+                        <div class="uploaded-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c01b1676329215a8deeca/', '_blank', 'width=1280,height=720')">
                             <div class="uploaded-video-thumb">
-                                <div class="video-duration">10:15</div>
+                                <img src="img/thumbnails/100000 MANERA DE MA_R A JUSTIN BIEBER.jpg" alt="Justin Bieber">
+                                <div class="video-duration">7:40</div>
                             </div>
-                            <div class="uploaded-video-title">Title here</div>
-                            <div class="uploaded-video-meta">by User • 3 years ago</div>
+                            <div class="uploaded-video-title">100 MANERAS DE MATAR A JUSTIN BIEBER | Happy Wheels ep. 7 |</div>
+                            <div class="uploaded-video-meta">by elrubiusOMG • 30/08/2012</div>
                         </div>
-                        <div class="uploaded-video-item">
+                          <div class="uploaded-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c02993c01d7d620160f69/', '_blank', 'width=1280,height=720')">
                             <div class="uploaded-video-thumb">
-                                <div class="video-duration">8:32</div>
+                                <img src="img/thumbnails/MEGAMIX JUEGOS DE TERROR Mejores sustos y partes GRASIOSAS.jpg" alt="Justin Bieber">
+                                <div class="video-duration">9:07</div>
                             </div>
-                            <div class="uploaded-video-title">Title here</div>
-                            <div class="uploaded-video-meta">by User • 4 years ago</div>
+                            <div class="uploaded-video-title">MEGAMIX | JUEGOS DE TERROR | Mejores sustos y partes GRASIOSAS</div>
+                            <div class="uploaded-video-meta">by elrubiusOMG • 1/11/2012</div>
                         </div>
-                        <div class="uploaded-video-item">
+                        <div class="uploaded-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c03001c1aa8b68d039601/', '_blank', 'width=1280,height=720')">
                             <div class="uploaded-video-thumb">
-                                <div class="video-duration">12:45</div>
+                                <img src="img/thumbnails/Sims 3 NUEVA CASA Y LIGANDO LIKE OLD TIMES Gordo y Follaa_ndo a los 40 ep.12.jpg" alt="Justin Bieber">
+                                <div class="video-duration">12:25</div>
                             </div>
-                            <div class="uploaded-video-title">Title here</div>
-                            <div class="uploaded-video-meta">by User • 1 year ago</div>
+                            <div class="uploaded-video-title">Sims 3 | NUEVA CASA Y LIGANDO LIKE OLD TIMES | Gordo y Follador a los 40 | ep.12</div>
+                            <div class="uploaded-video-meta">by elrubiusOMG • 5/11/2012</div>
                         </div>
-                        <div class="uploaded-video-item">
+                        <div class="uploaded-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c030d3c01d7d620161f09/', '_blank', 'width=1280,height=720')">
                             <div class="uploaded-video-thumb">
-                                <div class="video-duration">6:18</div>
+                                <img src="img/thumbnails/SKYRIM NO ME QUIERE.jpg" alt="Justin Bieber">
+                                <div class="video-duration">3:14</div>
                             </div>
-                            <div class="uploaded-video-title">Title here</div>
-                            <div class="uploaded-video-meta">by User • 2 years ago</div>
+                            <div class="uploaded-video-title">SKYRIM NO ME QUIERE :'| Gameplay COD | 82 Moabs | PARTIDAZA!!! (NO)</div>
+                            <div class="uploaded-video-meta">by elrubiusOMG • 11/11/2012</div>
                         </div>
-                        <div class="uploaded-video-item">
+                        <div class="uploaded-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c01b13c01d7d62015f070/', '_blank', 'width=1280,height=720')">
                             <div class="uploaded-video-thumb">
-                                <div class="video-duration">9:27</div>
+                                <img src="img/thumbnails/CHATROULETTE _ HOMBRES CON TE_AAS Y MAS HAMIJOS Ep. 2.jpg" alt="Justin Bieber">
+                                <div class="video-duration">5:43</div>
                             </div>
-                            <div class="uploaded-video-title">Title here</div>
-                            <div class="uploaded-video-meta">by User • 3 years ago</div>
+                            <div class="uploaded-video-title">CHATROULETTE | HOMBRES CON TETAAS Y MAS HAMIJOS Ep. 2</div>
+                            <div class="uploaded-video-meta">by elrubiusOMG • 19/11/2012</div>
                         </div>
-                        <div class="uploaded-video-item">
+                         <div class="uploaded-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c0300676329215a8e1ca7/', '_blank', 'width=1280,height=720')">
                             <div class="uploaded-video-thumb">
-                                <div class="video-duration">11:03</div>
+                                <img src="img/thumbnails/Sims 3  BARCOS Y BICHES IN DA CITY  Gordo y Fo¨_ador a los 40  ep.13.jpg" alt="Justin Bieber">
+                                <div class="video-duration">13:50</div>
                             </div>
-                            <div class="uploaded-video-title">Title here</div>
-                            <div class="uploaded-video-meta">by User • 4 years ago</div>
+                            <div class="uploaded-video-title">Sims 3 | BARCOS Y BITCHES IN DA CITY | Gordo y Follador a los 40 | ep.13</div>
+                            <div class="uploaded-video-meta">by elrubiusOMG • 26/11/2012</div>
                         </div>
                     </div>
                 </div>
@@ -174,7 +202,7 @@
                 
                 <!-- About this video -->
                 <div class="sidebar-module">
-                    <div class="sidebar-module-header">About i Troll you With Love</div>
+                    <div class="sidebar-module-header">About El Reto De La Canela Es Para Vagiinas</div>
                     <div class="sidebar-module-content">
                         <div class="about-text">
                             Gayplays sin sentido y trolleadas everywhere. Yepp.<br><br>
@@ -305,126 +333,831 @@
             <div class="content-layout">
                 <!-- Grid de videos -->
                 <div class="browse-videos-grid">
-                    <div class="browse-video-item">
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c02123c01d7d62015ff7b/', '_blank', 'width=1280,height=720')">
                         <div class="browse-video-thumb">
-                            <div class="video-duration">7:05</div>
+                            <img src="img/thumbnails/El Reto De La Canela Es Para Vag_nas.jpg" alt="El Reto De La Canela">
+                            <div class="video-duration">4:08</div>
                         </div>
                         <div class="browse-video-info">
-                            <div class="browse-video-title">Meet The Rubius | RELAJAD LAS TETAS</div>
-                            <div class="browse-video-stats">252,212 views</div>
-                            <div class="browse-video-date">1 day ago</div>
+                            <div class="browse-video-title">El Reto De La Canela Es Para Vagiinas</div>
+        
+                            <div class="browse-video-date">18/08/2012</div>
                         </div>
                     </div>
-                    <div class="browse-video-item">
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c0198676329215a8debbd/', '_blank', 'width=1280,height=720')">
                         <div class="browse-video-thumb">
-                            <div class="video-duration">12:45</div>
+                            <img src="img/thumbnails/desert-eagle.jpg" alt="Desert Eagle">
+                            <div class="video-duration">0:07</div>
                         </div>
                         <div class="browse-video-info">
-                            <div class="browse-video-title">Paranormal | ACOSO DE FANTASMAS</div>
-                            <div class="browse-video-stats">1,171,445 views</div>
-                            <div class="browse-video-date">5 days ago</div>
+                            <div class="browse-video-title">After Effects - Desert Eagle First Test</div>
+                           
+                            <div class="browse-video-date">22/08/2011</div>
                         </div>
                     </div>
-                    <div class="browse-video-item">
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c01b1676329215a8deeca/', '_blank', 'width=1280,height=720')">
                         <div class="browse-video-thumb">
-                            <div class="video-duration">8:35</div>
+                            <img src="img/thumbnails/100000 MANERA DE MA_R A JUSTIN BIEBER.jpg" alt="Justin Bieber">
+                            <div class="video-duration">7:40</div>
                         </div>
                         <div class="browse-video-info">
-                            <div class="browse-video-title">EL FURBY DEL INFIERNO</div>
-                            <div class="browse-video-stats">2,083,048 views</div>
-                            <div class="browse-video-date">1 week ago</div>
+                            <div class="browse-video-title">100 MANERAS DE MATAR A JUSTIN BIEBER | Happy Wheels ep. 7 |</div>
+                            
+                            <div class="browse-video-date">30/08/2012</div>
                         </div>
                     </div>
-                    <div class="browse-video-item">
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c02993c01d7d620160f69/', '_blank', 'width=1280,height=720')">
                         <div class="browse-video-thumb">
-                            <div class="video-duration">11:57</div>
+                            <img src="img/thumbnails/MEGAMIX JUEGOS DE TERROR Mejores sustos y partes GRASIOSAS.jpg" alt="MEGAMIX">
+                            <div class="video-duration">9:07</div>
                         </div>
                         <div class="browse-video-info">
-                            <div class="browse-video-title">Scribblenauts | NO LE TOQUES LAS...</div>
-                            <div class="browse-video-stats">1,209,000 views</div>
-                            <div class="browse-video-date">1 week ago</div>
+                            <div class="browse-video-title">MEGAMIX | JUEGOS DE TERROR | Mejores sustos y partes GRASIOSAS</div>
+                            <div class="browse-video-date">1/11/2012</div>
                         </div>
                     </div>
-                    <div class="browse-video-item">
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c03001c1aa8b68d039601/', '_blank', 'width=1280,height=720')">
                         <div class="browse-video-thumb">
-                            <div class="video-duration">5:08</div>
+                            <img src="img/thumbnails/Sims 3 NUEVA CASA Y LIGANDO LIKE OLD TIMES Gordo y Follaa_ndo a los 40 ep.12.jpg" alt="Sims 3">
+                            <div class="video-duration">12:25</div>
                         </div>
                         <div class="browse-video-info">
-                            <div class="browse-video-title">DRAW MY LIFE | by elrubius</div>
-                            <div class="browse-video-stats">2,056,279 views</div>
-                            <div class="browse-video-date">2 weeks ago</div>
+                            <div class="browse-video-title">Sims 3 | NUEVA CASA Y LIGANDO LIKE OLD TIMES | Gordo y Follador a los 40 | ep.12</div>
+                            <div class="browse-video-date">5/11/2012</div>
                         </div>
                     </div>
-                    <div class="browse-video-item">
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c030d3c01d7d620161f09/', '_blank', 'width=1280,height=720')">
                         <div class="browse-video-thumb">
-                            <div class="video-duration">13:18</div>
+                            <img src="img/thumbnails/SKYRIM NO ME QUIERE.jpg" alt="Skyrim">
+                            <div class="video-duration">3:14</div>
                         </div>
                         <div class="browse-video-info">
-                            <div class="browse-video-title">Sims 3 | HIJOS, HIJOS OJEJOS Y ...</div>
-                            <div class="browse-video-stats">915,516 views</div>
-                            <div class="browse-video-date">2 weeks ago</div>
+                            <div class="browse-video-title">SKYRIM NO ME QUIERE :'| Gameplay COD | 82 Moabs | PARTIDAZA!!! (NO)</div>
+                            <div class="browse-video-date">11/11/2012</div>
                         </div>
                     </div>
-                    <div class="browse-video-item">
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c01b13c01d7d62015f070/', '_blank', 'width=1280,height=720')">
                         <div class="browse-video-thumb">
-                            <div class="video-duration">4:32</div>
+                            <img src="img/thumbnails/CHATROULETTE _ HOMBRES CON TE_AAS Y MAS HAMIJOS Ep. 2.jpg" alt="Chatroulette">
+                            <div class="video-duration">5:43</div>
                         </div>
                         <div class="browse-video-info">
-                            <div class="browse-video-title">Trolls en League of Legends | QLA...</div>
-                            <div class="browse-video-stats">921,025 views</div>
-                            <div class="browse-video-date">3 weeks ago</div>
+                            <div class="browse-video-title">CHATROULETTE | HOMBRES CON TETAAS Y MAS HAMIJOS Ep. 2</div>
+                            <div class="browse-video-date">19/11/2012</div>
                         </div>
                     </div>
-                    <div class="browse-video-item">
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c0300676329215a8e1ca7/', '_blank', 'width=1280,height=720')">
                         <div class="browse-video-thumb">
-                            <div class="video-duration">11:40</div>
+                            <img src="img/thumbnails/Sims 3  BARCOS Y BICHES IN DA CITY  Gordo y Fo¨_ador a los 40  ep.13.jpg" alt="Sims 3">
+                            <div class="video-duration">13:50</div>
                         </div>
                         <div class="browse-video-info">
-                            <div class="browse-video-title">Scribblenauts | MENDIGOS Y ONKI...</div>
-                            <div class="browse-video-stats">1,083,607 views</div>
-                            <div class="browse-video-date">3 weeks ago</div>
+                            <div class="browse-video-title">Sims 3 | BARCOS Y BITCHES IN DA CITY | Gordo y Follador a los 40 | ep.13</div>
+                            <div class="browse-video-date">26/11/2012</div>
                         </div>
                     </div>
-                    <div class="browse-video-item">
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c01b13c01d7d62015f074/', '_blank', 'width=1280,height=720')">
                         <div class="browse-video-thumb">
-                            <div class="video-duration">10:53</div>
+                            <img src="img/thumbnails/CHATROULETTE _ EL TROLL SIENDO TROLEADO Y NUEVOS HAMIJOS! Ep. 3.jpg" alt="Chatroulette">
+                            <div class="video-duration">4:56</div>
                         </div>
                         <div class="browse-video-info">
-                            <div class="browse-video-title">SUPER ULTRA MEGA EPIC ESPECIAL...</div>
-                            <div class="browse-video-stats">1,957,779 views</div>
-                            <div class="browse-video-date">1 month ago</div>
+                            <div class="browse-video-title">Chatroulette | EL TROLL SIENDO TROLEADO Y NUEVOS HAMIJOS! | Ep. 3</div>
+                            <div class="browse-video-date">3/01/2013</div>
                         </div>
                     </div>
-                    <div class="browse-video-item">
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c024f1c1aa8b68d037f40/', '_blank', 'width=1280,height=720')">
                         <div class="browse-video-thumb">
-                            <div class="video-duration">13:19</div>
+                            <img src="img/thumbnails/Haunt SLENDER CON GRAFICAZOS Y CABALLOS EXCI_OS IN DA HOUSE.jpg" alt="Haunt">
+                            <div class="video-duration">10:37</div>
                         </div>
                         <div class="browse-video-info">
-                            <div class="browse-video-title">Slender The Arrival | EL JUEGO D...</div>
-                            <div class="browse-video-stats">900,012 views</div>
-                            <div class="browse-video-date">1 month ago</div>
+                            <div class="browse-video-title">Haunt | SLENDER CON GRAFICAZOS Y CABALLOS EXCITADOS IN DA HOUSE</div>
+                            <div class="browse-video-date">7/01/2013</div>
                         </div>
                     </div>
-                    <div class="browse-video-item">
+                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c02431c1aa8b68d037d37/', '_blank', 'width=1280,height=720')">
                         <div class="browse-video-thumb">
+                            <img src="img/thumbnails/GTA IV SPIDERMAN Y SU PERRO TIMMY IN THE CITY w Mangel.jpg" alt="Haunt">
+                            <div class="video-duration">5:38</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">GTA IV | SPIDERMAN Y SU PERRO TIMMY IN THE CITY | w/ Mangel</div>
+                            <div class="browse-video-date">12/02/2013</div>
+                        </div>
+                    </div>
+                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c02e21c1aa8b68d039196/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/Scribblenauts NO LE TOQUES LAS PELOTAS A DIOS Ep. 2.jpg" alt="Haunt">
+                            <div class="video-duration">11:56</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">Scribblenauts | NO LE TOQUES LAS PELOTAS A DIOS | Ep. 2</div>
+                            <div class="browse-video-date">7/03/2013</div>
+                        </div>
+                    </div>
+                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c01b1676329215a8deed1/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/CHATROULETTE _ ENSEÑANDO ESPAÑOL A GUIRIS Y TETAAS EVERYWHERE _ Ep. 5.jpg" alt="Haunt">
+                            <div class="video-duration">5:45</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">Chatroulette | ENSEÑANDO ESPAÑOL A GUIRIS Y TETAS EVERYWHERE | Ep. 5</div>
+                            <div class="browse-video-date">29/03/2013</div>
+                        </div>
+                    </div>
+                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c03303c01d7d62016245a/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/UN DIA NORMAL EN EL PARQUE.jpg" alt="Haunt">
+                            <div class="video-duration">3:52</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">UN DIA NORMAL EN EL PARQUE</div>
+                            <div class="browse-video-date">13/05/2013</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c032f676329215a8e23b9/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/ULTRA MEGA TARTAS SUPER ESPECIAL 2 MILLONES.jpg" alt="Haunt">
+                            <div class="video-duration">5:58</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">ULTRA MEGA TARTAS SUPER ESPECIAL | 2 MILLONES</div>
+                            <div class="browse-video-date">18/05/2013</div>
+                        </div>
+                    </div>
+                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c0250676329215a8e04e0/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/HAY QUE AMPUTAR! Meet The Rubius.jpg" alt="Haunt">
+                            <div class="video-duration">6:54</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">HAY QUE AMPUTAR! | Meet The Rubius</div>
+                            <div class="browse-video-date">4/06/2013</div>
+                        </div>
+                    </div>
+                    
+                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c02763c01d7d620160ba1/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/LOS DIOSES DEL BAILE Just Dance 2014 con HEMBRAS.jpg" alt="Haunt">
+                            <div class="video-duration">4:02</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">LOS DIOSES DEL BAILE | Just Dance 2014 con HEMBRAS</div>
+                            <div class="browse-video-date">18/06/2013</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c01b13c01d7d62015f072/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/COCHES, INFECTADOS Y MOAR HEMBRAS The Crew The Division.jpg" alt="Haunt">
+                            <div class="video-duration">4:59</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">COCHES, INFECTADOS Y MOAR HEMBRAS | The Crew / The Division</div>
+                            <div class="browse-video-date">27/06/2013</div>
+                        </div>
+                    </div>
+                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c0316676329215a8e1fb7/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/SOY UN ABUSÓN... Y ME ENCANTA Bully.jpg" alt="Haunt">
+                            <div class="video-duration">8:45</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">SOY UN ABUSÓN... Y ME ENCANTA | Bully</div>
+                            <div class="browse-video-date">24/07/2013</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c031a1c1aa8b68d0399d8/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/SOY UN DINOSAURIO Primal Carnage.jpg" alt="Haunt">
+                            <div class="video-duration">5:13</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">SOY UN DINOSAURIO | Primal Carnage</div>
+                            <div class="browse-video-date">4/08/2013</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c02623c01d7d620160972/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/LLORANDO COMO UNA NENA Alone in The Rift.jpg" alt="Haunt">
                             <div class="video-duration">7:11</div>
                         </div>
                         <div class="browse-video-info">
-                            <div class="browse-video-title">GTA IV RANDOM | SPIDERMAN Y SU...</div>
-                            <div class="browse-video-stats">1,322,200 views</div>
-                            <div class="browse-video-date">1 month ago</div>
+                            <div class="browse-video-title">LLORANDO COMO UNA NENA | Alone in The Rift</div>
+                            <div class="browse-video-date">30/08/2013</div>
                         </div>
                     </div>
-                    <div class="browse-video-item">
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c030d1c1aa8b68d0397e3/', '_blank', 'width=1280,height=720')">
                         <div class="browse-video-thumb">
-                            <div class="video-duration">12:08</div>
+                            <img src="img/thumbnails/SOY LIBREEEE... A NO SER Outlast Ep. 5.jpg" alt="Outlast">
+                            <div class="video-duration">16:07</div>
                         </div>
                         <div class="browse-video-info">
-                            <div class="browse-video-title">Meet The Rubius | VIRGEN EN LA ...</div>
-                            <div class="browse-video-stats">1,204,597 views</div>
-                            <div class="browse-video-date">1 month ago</div>
+                            <div class="browse-video-title">SOY LIBREEEE... A NO SER | Outlast | Ep. 5</div>
+                            <div class="browse-video-date">3/10/2013</div>
                         </div>
                     </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c0255676329215a8e056e/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/LA CONSPIRACION DEL CLON GTA V RANDOM Online.jpg" alt="GTA V">
+                            <div class="video-duration">4:47</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">LA CONSPIRACION DEL CLON | GTA V | RANDOM Online</div>
+                            <div class="browse-video-date">21/10/2013</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c5752a1ff0336ca30575d/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/MONTAJE ULTRAMIX TERROR 2013 Especial Halloween.jpg" alt="Halloween">
+                            <div class="video-duration">10:01</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">MONTAJE ULTRAMIX TERROR 2013 | Especial Halloween</div>
+                            <div class="browse-video-date">30/10/2013</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c032a3c01d7d620162351/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/TRES RETARDS EN LONDRES.jpg" alt="Londres">
+                            <div class="video-duration">5:28</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">TRES RETARDS EN LONDRES</div>
+                            <div class="browse-video-date">17/03/2014</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c032b1c1aa8b68d039bc6/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/Troll en Chatroulette _ THE TROLL IS BACK.jpg" alt="Chatroulette">
+                            <div class="video-duration">9:56</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">Troll en Chatroulette | THE TROLL IS BACK</div>
+                            <div class="browse-video-date">25/03/2014</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c03003c01d7d620161d28/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/SIMULADOR DE CABRA EXTREMA 2014.jpg" alt="Goat Simulator">
+                            <div class="video-duration">11:30</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">SIMULADOR DE CABRA EXTREMA 2014</div>
+                            <div class="browse-video-date">4/04/2014</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c02551c1aa8b68d03802c/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/LA GRAN BUSQUEDA DE MI PENE.jpg" alt="Busqueda">
+                            <div class="video-duration">7:35</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">LA GRAN BUSQUEDA DE MI PENE</div>
+                            <div class="browse-video-date">14/04/2014</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c030d1c1aa8b68d0397c9/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/SIMULADOR DE NYAN CAT CABRA.jpg" alt="Nyan Cat">
+                            <div class="video-duration">5:21</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">SIMULADOR DE NYAN CAT CABRA</div>
+                            <div class="browse-video-date">20/04/2014</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c02121c1aa8b68d037794/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/EL PIANISTA QUE ESCAPÓ DE PEDOBEAAR _ GMOD RANDOM.jpg" alt="GMOD">
+                            <div class="video-duration">4:37</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">EL PIANISTA QUE ESCAPÓ DE PEDOBEAR | GMOD RANDOM</div>
+                            <div class="browse-video-date">14/05/2014</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c02431c1aa8b68d037d3d/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/HACKEANDO POR LA JUSTICIA! _ Watch Dogs PS4.jpg" alt="Watch Dogs">
+                            <div class="video-duration">7:05</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">HACKEANDO POR LA JUSTICIA! | Watch Dogs PS4</div>
+                            <div class="browse-video-date">22/05/2014</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c01f83c01d7d62015fc2b/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/EL LIBRO TROLL.jpg" alt="Libro Troll">
+                            <div class="video-duration">7:11</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">EL LIBRO TROLL</div>
+                            <div class="browse-video-date">25/05/2014</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c01f8676329215a8dfa4e/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/E3, EPIC LUCES, CHUCHES Y RANDOM Epic Vlog LA Day 2.jpg" alt="E3">
+                            <div class="video-duration">7:35</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">E3, EPIC LUCES, CHUCHES Y RANDOM | Epic Vlog LA Day 2</div>
+                            <div class="browse-video-date">12/06/2014</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c0262676329215a8e0732/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/LOS CAZA HIPSTERS _ GTA V Random.jpg" alt="GTA V">
+                            <div class="video-duration">9:35</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">LOS CAZA HIPSTERS | GTA V Random</div>
+                            <div class="browse-video-date">21/06/2014</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c02423c01d7d620160527/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/GENTE RARA EN CHATROULETTE _ Clasicos Animados.jpg" alt="Chatroulette">
+                            <div class="video-duration">2:33</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">GENTE RARA EN CHATROULETTE | Clasicos Animados</div>
+                            <div class="browse-video-date">10/09/2014</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c027d3c01d7d620160c33/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/LOS TEJONES SON MALAS MADRES _ Shelter.jpg" alt="Shelter">
+                            <div class="video-duration">8:37</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">LOS TEJONES SON MALAS MADRES | Shelter</div>
+                            <div class="browse-video-date">17/09/2014</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c01b1676329215a8deec3/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/50 COSAS SOBRE MI _ by Rubius.jpg" alt="50 Cosas">
+                            <div class="video-duration">12:38</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">50 COSAS SOBRE MI by Rubius</div>
+                            <div class="browse-video-date">19/09/2014</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c0276676329215a8e09e0/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/LOS PILOTOS CIEGOS _ GTA V Random.jpg" alt="GTA V">
+                            <div class="video-duration">9:12</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">LOS PILOTOS CIEGOS | GTA V Random</div>
+                            <div class="browse-video-date">23/09/2014</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c01b13c01d7d62015f0aa/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/DESTROZANDO COCHES SUPER CAROS _ BeamNG.jpg" alt="BeamNG">
+                            <div class="video-duration">10:35</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">DESTROZANDO COCHES SUPER CAROS | BeamNG</div>
+                            <div class="browse-video-date">28/09/2014</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c0212676329215a8dfd84/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/EL ULTIMO PUZZLE SANGRIENTO _ The Evil Within.jpg" alt="Evil Within">
+                            <div class="video-duration">27:02</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">EL ULTIMO PUZZLE SANGRIENTO | The Evil Within</div>
+                            <div class="browse-video-date">4/10/2014</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c027d676329215a8e0aae/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/MANERAS DE NO HACER UNA PRIMERA CITA.jpg" alt="Primera Cita">
+                            <div class="video-duration">7:02</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">MANERAS DE NO HACER UNA PRIMERA CITA</div>
+                            <div class="browse-video-date">10/10/2014</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c02e13c01d7d62016186a/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/REGALOS WTF, RAP BEYOND Y KIT ANTI-HATERS.jpg" alt="Regalos">
+                            <div class="video-duration">9:00</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">REGALOS WTF, RAP BEYOND Y KIT ANTI-HATERS</div>
+                            <div class="browse-video-date">27/10/2014</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c01b11c1aa8b68d0368db/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/ATRAPADO EN UN REALITY_.jpg" alt="Reality">
+                            <div class="video-duration">6:06</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">ATRAPADO EN UN REALITY?</div>
+                            <div class="browse-video-date">29/10/2014</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c031a3c01d7d620162129/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/TRES_RETARDS_EN_AMSTERDAM.webp" alt="Amsterdam">
+                            <div class="video-duration">8:56</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">TRES RETARDS EN AMSTERDAM</div>
+                            <div class="browse-video-date">24/11/2014</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c02b9676329215a8e12db/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/PIKABOSS ES DIOS.jpg" alt="Pikaboss">
+                            <div class="video-duration">7:15</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">PIKABOSS ES DIOS</div>
+                            <div class="browse-video-date">2/12/2014</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c5cea2293eb9e16818c2c/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/RUMORES ESTUPIDOS SOBRE RUBIUS.jpg" alt="Rumores">
+                            <div class="video-duration">6:42</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">RUMORES ESTUPIDOS SOBRE RUBIUS</div>
+                            <div class="browse-video-date">23/01/2015</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c524ae268a6ddefd65ad9/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/CADAVER EN EL COCHE Camara Oculta.jpg" alt="Camara Oculta">
+                            <div class="video-duration">11:52</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">CADAVER EN EL COCHE | Camara Oculta</div>
+                            <div class="browse-video-date">4/02/2015</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c5f83e268a6ddefd7bfc3/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/MI ASISTENTA KAWAII.jpg" alt="Apps">
+                            <div class="video-duration">9:41</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">MI ASISTENTA KAWAII | Random Apps</div>
+                            <div class="browse-video-date">11/02/2015</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c5d1a2293eb9e16819182/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/SALSEO EN ZOMBIE LAND.jpg" alt="H1Z1">
+                            <div class="video-duration">11:52</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">SALSEO EN ZOMBIE LAND | H1Z1 Random</div>
+                            <div class="browse-video-date">5/04/2015</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c6672a1ff0336ca320f76/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/COMO DESTROZAR A RUBIUS.jpg" alt="Give Up">
+                            <div class="video-duration">11:28</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">COMO DESTROZAR A RUBIUS | Give Up 2</div>
+                            <div class="browse-video-date">7/04/2015</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c65ffa1ff0336ca3200ce/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/EL KOMBATE LEGENDARIO.jpg" alt="Kombate">
+                            <div class="video-duration">9:45</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">EL KOMBATE LEGENDARIO</div>
+                            <div class="browse-video-date">25/04/2015</div>
+                        </div>
+                    </div>
+                   <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c6f9f2293eb9e1683c444/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/EL NIVEL IMPOSIBLE DE SKRILLEX  Geometry Dash.jpg" alt="Skrillex">
+                            <div class="video-duration">11:26</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">EL NIVEL IMPOSIBLE DE SKRILLEX | Geometry Dash</div>
+                            <div class="browse-video-date">1/06/2015</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c02c73c01d7d62016156e/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/POR MI NOVIO, MATO _ Yandere Simulator.jpg" alt="Yandere">
+                            <div class="video-duration">12:00</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">POR MI NOVIO, MATO | Yandere Simulator</div>
+                            <div class="browse-video-date">13/07/2015</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c027e3c01d7d620160c44/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/MATANDO DELANTE DE SENPAI _ Yandere Simulator.jpg" alt="Yandere">
+                            <div class="video-duration">13:31</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">MATANDO DELANTE DE SENPAI | Yandere Simulator</div>
+                            <div class="browse-video-date">19/07/2015</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c01b11c1aa8b68d0368c9/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/_ATAQUE DE TITANES _ Yandere Simulator.jpg" alt="Titanes">
+                            <div class="video-duration">8:47</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">ATAQUE DE TITANES | Yandere Simulator</div>
+                            <div class="browse-video-date">4/08/2015</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c029a3c01d7d620160f82/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/MI XBOX ES RACISTA _ Trollefono.jpg" alt="Trollefono">
+                            <div class="video-duration">11:17</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">MI XBOX ES RACISTA | Trollefono</div>
+                            <div class="browse-video-date">13/08/2015</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c02e23c01d7d620161886/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/SALSEO EN LOS BAÑOS _ Yandere Simulator.jpg" alt="Yandere">
+                            <div class="video-duration">9:10</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">SALSEO EN LOS BAÑOS | Yandere Simulator</div>
+                            <div class="browse-video-date">15/08/2015</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c0255676329215a8e0562/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/IRON MAN VS 1000 AVIONES _ GTA V MODS.jpg" alt="GTA">
+                            <div class="video-duration">11:02</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">IRON MAN VS 1000 AVIONES | GTA V MODS</div>
+                            <div class="browse-video-date">17/08/2015</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c5775e268a6ddefd6debb/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/MI PERRO Y YO CONTRA EL MUNDO MGSV.jpg" alt="MGSV">
+                            <div class="video-duration">14:14</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">MI PERRO Y YO CONTRA EL MUNDO | MGSV</div>
+                            <div class="browse-video-date">2/09/2015</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c02c6676329215a8e1445/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/PLANTAS PIRAÑA AGRESIVAS _ Super Mario Maker.jpg" alt="Mario">
+                            <div class="video-duration">13:01</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">PLANTAS PIRAÑA AGRESIVAS | Super Mario Maker</div>
+                            <div class="browse-video-date">13/09/2015</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c64fae268a6ddefd8604c/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/LAS SALCHICHAS EPICAS.jpg" alt="Salchichas">
+                            <div class="video-duration">7:02</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">LAS SALCHICHAS EPICAS</div>
+                            <div class="browse-video-date">23/09/2015</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c02e1676329215a8e17a2/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/REGALOS DE FANSES.jpg" alt="Regalos">
+                            <div class="video-duration">6:47</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">REGALOS DE FANSES</div>
+                            <div class="browse-video-date">14/10/2015</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c01f81c1aa8b68d0374c7/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/EL NIÑO CALVO Y LA TARTA _ Fallout 4 RANDOM.jpg" alt="Fallout">
+                            <div class="video-duration">7:20</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">EL NIÑO CALVO Y LA TARTA | Fallout 4 RANDOM</div>
+                            <div class="browse-video-date">14/11/2015</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c57daa1ff0336ca3066bc/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/MI PEOR APUESTA.jpg" alt="Apuesta">
+                            <div class="video-duration">7:12</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">MI PEOR APUESTA</div>
+                            <div class="browse-video-date">8/12/2015</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c68fd2293eb9e1682ffbd/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/tengo un sueño.jpg" alt="Just Cause">
+                            <div class="video-duration">7:35</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">TENGO UN SUEÑO | Just Cause 3</div>
+                            <div class="browse-video-date">17/12/2015</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c6f68a1ff0336ca332414/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/ATRAPADO MISMO DI.jpg" alt="Garbage Day">
+                            <div class="video-duration">10:50</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">ATRAPADO EN EL MISMO DIA PARA SIEMPRE | Garbage Day</div>
+                            <div class="browse-video-date">24/01/2016</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c799f0c91682b77c4243a/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/DE FIESTA CON AMIGOS Y OLIVER HELDENS Normal Vlog.jpg" alt="Vlog">
+                            <div class="video-duration">9:14</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">DE FIESTA CON AMIGOS Y OLIVER HELDENS | Normal Vlog</div>
+                            <div class="browse-video-date">11/02/2016</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c70aae268a6ddefd9c545/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/COCINANDO EBOLA PARA SENPAI.jpg" alt="Yandere">
+                            <div class="video-duration">9:43</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">COCINANDO EBOLA PARA SENPAI | Yandere Simulator</div>
+                            <div class="browse-video-date">17/05/2016</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c6139e268a6ddefd7ee9a/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/RUBIUS APRENDE A CONDUCIR.jpg" alt="Conducir">
+                            <div class="video-duration">7:11</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">RUBIUS APRENDE A CONDUCIR</div>
+                            <div class="browse-video-date">27/05/2016</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c755b0c91682b77c37f21/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/EL FACKIN BOSS DEL OVERWATCH.jpg" alt="Overwatch">
+                            <div class="video-duration">8:16</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">EL FACKIN BOSS DEL OVERWATCH</div>
+                            <div class="browse-video-date">2/06/2016</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c63dce268a6ddefd83ce6/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/EL BAILE ZOMBIE  Just Dance 2017.jpg" alt="Just Dance">
+                            <div class="video-duration">4:17</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">EL BAILE ZOMBIE | Just Dance 2017</div>
+                            <div class="browse-video-date">23/06/2016</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697d06de0c91682b77d61804/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/NO ME CREO QUE ESTE JUGANDO A ESTO  Zelda Breath of The Wild.jpg" alt="Zelda">
+                            <div class="video-duration">16:18</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">NO ME CREO QUE ESTE JUGANDO A ESTO | Zelda Breath of The Wild</div>
+                            <div class="browse-video-date">29/06/2016</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c754e0c91682b77c37d13/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/DOS TONTOS CAZAN POKEMON EN LA VIDA REAL  Pokemon GO.jpg" alt="Pokemon GO">
+                            <div class="video-duration">6:49</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">DOS TONTOS CAZAN POKEMON EN LA VIDA REAL - Pokemon GO</div>
+                            <div class="browse-video-date">9/07/2016</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697e9d995ff8d4ab5d284b43/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/REACCIONANDO A DIBUJOS DE SUSCRIPTORES.jpg" alt="Dibujos">
+                            <div class="video-duration">10:17</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">REACCIONANDO A DIBUJOS DE SUSCRIPTORES</div>
+                            <div class="browse-video-date">24/08/2016</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697d0c6cb3fe55564296a951/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/SUPER MARIO MAKER CHALLENGE.jpg" alt="Mario Maker">
+                            <div class="video-duration">11:41</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">SUPER MARIO MAKER CHALLENGE #1</div>
+                            <div class="browse-video-date">8/09/2016</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c780bb3fe55564283d85d/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/SI TE RIES PIERDES CHALLENGE con Rubius.jpg" alt="Challenge">
+                            <div class="video-duration">7:09</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">SI TE RIES PIERDES CHALLENGE con Rubius</div>
+                            <div class="browse-video-date">9/10/2016</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c7a4fbbfa4f281ae0b4ba/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/PELEAS ADORABLES  Gang Beasts Momentos Divertidos.jpg" alt="Gang Beasts">
+                            <div class="video-duration">9:06</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">PELEAS ADORABLES | Gang Beasts (Momentos Divertidos)</div>
+                            <div class="browse-video-date">11/11/2016</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697d18e70c91682b77d7dbdf/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/PORTERIA CHALLENGE by Rubius.jpg" alt="Porteria">
+                            <div class="video-duration">6:41</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">PORTERIA CHALLENGE by Rubius</div>
+                            <div class="browse-video-date">12/08/2017</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697d13c4bbfa4f281af3caa9/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/MIS SUBS ME ENVIAN CANCIONES TROLL.jpg" alt="Momentos">
+                            <div class="video-duration">10:21</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">MIS SUBS ME ENVIAN CANCIONES TROLL | Momentos Rubius #1</div>
+                            <div class="browse-video-date">17/01/2018</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c7e2bbbfa4f281ae129dd/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/EL COMBATE LEGENDARIO Z.jpg" alt="Combate">
+                            <div class="video-duration">10:39</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">EL COMBATE LEGENDARIO Z</div>
+                            <div class="browse-video-date">28/01/2018</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697d0ea7bbfa4f281af34822/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/ROBLOSLDO.png" alt="Roblox">
+                            <div class="video-duration">11:16</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">REACCIONANDO A ROBLOX</div>
+                            <div class="browse-video-date">22/04/2018</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c7e70bbfa4f281ae1324b/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/EL-MAYOR-SORTEO-DE-LA-HISTORIA.png" alt="Sorteo">
+                            <div class="video-duration">8:58</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">EL MAYOR SORTEO DE LA HISTORIA DE YOUTUBE</div>
+                            <div class="browse-video-date">29/09/2018</div>
+                        </div>
+                    </div>  
+                    
                 </div>
 
                 <!-- Sidebar derecho -->
@@ -485,9 +1218,22 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Paginación -->
+            <div class="pagination">
+                <button class="page-btn" onclick="changePage(1)">1</button>
+                <button class="page-btn active" onclick="changePage(2)">2</button>
+                <button class="page-btn" onclick="changePage(3)">3</button>
+                <button class="page-btn" onclick="changePage(4)">4</button>
+                <span class="page-dots">...</span>
+                <button class="page-btn" onclick="changePage(10)">10</button>
+                <button class="page-btn next-btn" onclick="nextPage()">Next →</button>
+            </div>
         </div>
 
     </div>
+
+    </div><!-- Cierre de #main-content -->
 
     <script src="js/script.js"></script>
 </body>
