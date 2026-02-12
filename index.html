@@ -54,11 +54,11 @@
                     <button class="subscribe-channel-btn">
                         <span>▶</span> Subscribe
                     </button>
-                    <span class="subscribe-count">1,372,376</span>
+                    <span class="subscribe-count">1,377,583</span>
                 </div>
                 <div class="channel-stats-header">
-                    <div><span class="stat-number">1,372,697</span> subscribers</div>
-                    <div><span class="stat-number">167,820,721</span> video views</div>
+                    <div><span class="stat-number">1,377,583</span> subscribers</div>
+                    <div><span class="stat-number">967,820,921</span> video views</div>
                 </div>
             </div>
         </div>
@@ -80,23 +80,17 @@
             
             <!-- Columna Izquierda - Video Principal -->
             <div class="featured-left">
-                <!-- Reproductor de Video -->
-                <div class="video-player-container" style="position: relative; background: #000; cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c02123c01d7d62015ff7b/', '_blank', 'width=1280,height=720')">
-                    <img src="img/gato.jpg" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.4;">
-                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: center;">
-                        <div style="text-align: center;">
-                            <div style="background: rgba(204, 24, 30, 0.9); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
-                                <span style="font-size: 36px; color: white; margin-left: 5px;">▶</span>
-                            </div>
-                            <div style="color: white; font-size: 16px; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Click para reproducir</div>
-                            <div style="color: #ddd; font-size: 12px; margin-top: 5px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Se abrirá en nueva ventana</div>
-                        </div>
-                    </div>
+                <!-- GIF Principal -->
+                <div class="featured-gif-container">
+                    <img src="img/principal.gif" alt="Featured Animation" class="featured-gif">
                 </div>
                 
                 <!-- Información del Video -->
                 <div class="video-info-wrapper">
-                    <h1 class="video-title">El Reto De La Canela Es Para Vagiinas</h1>
+                    <h1 class="video-title">Feliz cumpleaños 🎂</h1>
+                    <div class="featured-channel-description">
+                        <p>Esta bodega se mantendrá siempre para que todos puedan entrar a disfrutar de tu legado sin problemas de terceros.</p>
+                    </div>
                     
                     <div class="video-meta">
                         <div class="uploader-info">
@@ -111,7 +105,7 @@
                         
                         <div class="video-stats">
                             <div class="stat-item">
-                                <span class="stat-number">967,820,971</span> views
+                                <span class="stat-number">967,820,921</span>views
                             </div>
                         </div>
                     </div>
@@ -119,9 +113,9 @@
                     <div class="video-actions">
                         <button class="action-btn">👍 Like</button>
                         <button class="action-btn">👎 Dislike</button>
-                        <button class="action-btn">Add to</button>
-                        <button class="action-btn">Share</button>
-                        <button class="action-btn">More</button>
+                        <button class="action-btn">📌 Favorite</button>
+                        <button class="action-btn">🔗 Share</button>
+                        <button class="action-btn">⋯ More</button>
                     </div>
                 </div>
 
@@ -202,15 +196,15 @@
                 
                 <!-- About this video -->
                 <div class="sidebar-module">
-                    <div class="sidebar-module-header">About El Reto De La Canela Es Para Vagiinas</div>
+                    <div class="sidebar-module-header">elRubiusOMG</div>
                     <div class="sidebar-module-content">
                         <div class="about-text">
                             Gayplays sin sentido y trolleadas everywhere. Yepp.<br><br>
                             Soy elrubius. Tengo 23,4 años. Me gustan los videojuegos, los dinosaurios y comer pan de pipas cuando nadie me esta mirando.
                         </div>
                         <div class="social-links">
-                            <a href="#" class="social-link" style="color: #00acee;">🐦 Twittah</a>
-                            <a href="#" class="social-link" style="color: #3b5998;">📘 Feisbuk</a>
+                            <a href="https://x.com/Rubiu5" target="_blank" class="social-link" style="color: #00acee;">🐦 Twittah</a>
+                            <a href="https://m.twitch.tv/rubius/home" target="_blank" class="social-link" style="color: #3b5998;">📘 Twitch</a>
                         </div>
                         <ul class="about-stats">
                             <li><span>by elrubiusOMG</span></li>
@@ -331,6 +325,96 @@
             </div>
 
             <div class="content-layout">
+                <!-- Categorías (oculto por defecto, se muestra al hacer clic en Playlists) -->
+                <div class="categories-section" style="display: none;">
+                    <h2 class="categories-title">Video Categories</h2>
+                    <div class="categories-grid">
+                        <div class="category-card" data-category="all">
+                            <div class="category-icon">📺</div>
+                            <div class="category-name">All Videos</div>
+                            <div class="category-count">--</div>
+                        </div>
+                        <div class="category-card" data-category="CHALLENGE">
+                            <div class="category-icon">🎯</div>
+                            <div class="category-name">Challenge</div>
+                            <div class="category-count">--</div>
+                        </div>
+                        <div class="category-card" data-category="GAYPLAYS">
+                            <div class="category-icon">🎮</div>
+                            <div class="category-name">Gayplays</div>
+                            <div class="category-count">--</div>
+                        </div>
+                        <div class="category-card" data-category="THE BEST OF RUBIUS">
+                            <div class="category-icon">⭐</div>
+                            <div class="category-name">The Best of Rubius</div>
+                            <div class="category-count">--</div>
+                        </div>
+                        <div class="category-card" data-category="CHATTROULETTE">
+                            <div class="category-icon">💬</div>
+                            <div class="category-name">Chatroulette</div>
+                            <div class="category-count">--</div>
+                        </div>
+                        <div class="category-card" data-category="VLOG">
+                            <div class="category-icon">📹</div>
+                            <div class="category-name">Vlogs</div>
+                            <div class="category-count">--</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección More (oculto por defecto, se muestra al hacer clic en More) -->
+                <div class="more-section" style="display: none;">
+                    <div class="more-content">
+                        <div class="download-box">
+                            <div class="download-icon">💾</div>
+                            <h2 class="download-title">Descargar Contenido</h2>
+                            <p class="download-description">
+                                Click para descargar los videos y miniaturas (ordenados por fechas)
+                            </p>
+                            <a href="https://drive.google.com/drive/folders/1-qMbsIlSjjasV5eBR34rY4m2r4IHh-Gy" target="_blank" class="download-button">
+                                📂 Abrir Google Drive
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección Comments (oculto por defecto, se muestra al hacer clic en Comments) -->
+                <div class="comments-section" style="display: none;">
+                    <div class="comments-container">
+                        <h2 class="comments-title">Comments</h2>
+                        <div class="giscus-wrapper">
+                            <script src="https://giscus.app/client.js"
+                                    data-repo="TU-USUARIO/TU-REPOSITORIO"
+                                    data-repo-id="TU-REPO-ID"
+                                    data-category="General"
+                                    data-category-id="TU-CATEGORY-ID"
+                                    data-mapping="pathname"
+                                    data-strict="0"
+                                    data-reactions-enabled="1"
+                                    data-emit-metadata="0"
+                                    data-input-position="top"
+                                    data-theme="light"
+                                    data-lang="es"
+                                    data-loading="lazy"
+                                    crossorigin="anonymous"
+                                    async>
+                            </script>
+                        </div>
+                        <div class="comments-instructions">
+                            <p><strong>📌 Cómo configurar Giscus:</strong></p>
+                            <ol>
+                                <li>Visita <a href="https://giscus.app" target="_blank">giscus.app</a></li>
+                                <li>Conecta tu repositorio de GitHub</li>
+                                <li>Copia los valores de <code>data-repo</code>, <code>data-repo-id</code>, <code>data-category-id</code></li>
+                                <li>Reemplaza los valores en el código HTML arriba</li>
+                            </ol>
+                            <p style="margin-top: 15px; color: #666;">
+                                <em>Alternativamente, puedes usar <a href="https://utteranc.es" target="_blank">Utterances</a> que es más simple pero con menos funciones.</em>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Grid de videos -->
                 <div class="browse-videos-grid">
                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c02123c01d7d62015ff7b/', '_blank', 'width=1280,height=720')">
@@ -627,6 +711,28 @@
                             <div class="browse-video-date">20/04/2014</div>
                         </div>
                     </div>
+
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/698ad4b9aec3d4e420cf6760/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/INCOMODANDO A GENTE EN LA PIZZERIA _ Camara Oculta.jpg" alt="Nyan Cat">
+                            <div class="video-duration">7:47</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">INCOMODANDO A GENTE EN LA PIZZERIA | Camara Oculta</div>
+                            <div class="browse-video-date">1/05/2014</div>
+                        </div>
+                    </div>
+                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/698ad4b9fc23d3d76fb515af/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/VICTORIA LEGENDARIA _ JUEGOS DEL HAMBRE.jpg" alt="Juegos del Hambre">
+                            <div class="video-duration">5:03</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">VICTORIA LEGENDARIA | JUEGOS DEL HAMBRE</div>
+                            <div class="browse-video-date">5/05/2014</div>
+                        </div>
+                    </div>
+
                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c02121c1aa8b68d037794/', '_blank', 'width=1280,height=720')">
                         <div class="browse-video-thumb">
                             <img src="img/thumbnails/EL PIANISTA QUE ESCAPÓ DE PEDOBEAAR _ GMOD RANDOM.jpg" alt="GMOD">
@@ -847,6 +953,18 @@
                             <div class="browse-video-date">25/04/2015</div>
                         </div>
                     </div>
+
+                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/698ad73faec3d4e420cfc80d/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/NUEVAS MANERAS DE TROLEAR.jpg" alt="Kombate">
+                            <div class="video-duration">17:16</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">NUEVAS MANERAS DE TROLEAR | Rust</div>
+                            <div class="browse-video-date">6/05/2015</div>
+                        </div>
+                    </div>
+
                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c6f9f2293eb9e1683c444/', '_blank', 'width=1280,height=720')">
                         <div class="browse-video-thumb">
                             <img src="img/thumbnails/EL NIVEL IMPOSIBLE DE SKRILLEX  Geometry Dash.jpg" alt="Skrillex">
@@ -855,6 +973,17 @@
                         <div class="browse-video-info">
                             <div class="browse-video-title">EL NIVEL IMPOSIBLE DE SKRILLEX | Geometry Dash</div>
                             <div class="browse-video-date">1/06/2015</div>
+                        </div>
+                    </div>
+
+                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/698ad4b9873071aec5d6a272/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/Algo que necesitaba contaros.jpg" alt="Skrillex">
+                            <div class="video-duration">5:33</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">Algo que necesitaba contaros.</div>
+                            <div class="browse-video-date">7/06/2015</div>
                         </div>
                     </div>
                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c02c73c01d7d62016156e/', '_blank', 'width=1280,height=720')">
@@ -949,12 +1078,23 @@
                     </div>
                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c02e1676329215a8e17a2/', '_blank', 'width=1280,height=720')">
                         <div class="browse-video-thumb">
-                            <img src="img/thumbnails/REGALOS DE FANSES.jpg" alt="Regalos">
+                            <img src="img/thumbnails/REGALOS DE FANSES.png" alt="Regalos">
                             <div class="video-duration">6:47</div>
                         </div>
                         <div class="browse-video-info">
                             <div class="browse-video-title">REGALOS DE FANSES</div>
                             <div class="browse-video-date">14/10/2015</div>
+                        </div>
+                    </div>
+
+                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/698ad4b9fc23d3d76fb515a2/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/CELEBRITIES.jpg" alt="Regalos">
+                            <div class="video-duration">6:51</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">CELEBRITIES - ELRUBIUS</div>
+                            <div class="browse-video-date">9/11/2015</div>
                         </div>
                     </div>
                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c01f81c1aa8b68d0374c7/', '_blank', 'width=1280,height=720')">
@@ -977,6 +1117,18 @@
                             <div class="browse-video-date">8/12/2015</div>
                         </div>
                     </div>
+
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/698ad69afc23d3d76fb55ca2/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/RESCATANDO AL CALVO.jpg" alt="Calvo">
+                            <div class="video-duration">10:17</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">RESCATANDO AL CALVO | Rainbow Six Siege</div>
+                            <div class="browse-video-date">11/12/2015</div>
+                        </div>
+                    </div>
+
                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c68fd2293eb9e1682ffbd/', '_blank', 'width=1280,height=720')">
                         <div class="browse-video-thumb">
                             <img src="img/thumbnails/tengo un sueño.jpg" alt="Just Cause">
@@ -1007,6 +1159,68 @@
                             <div class="browse-video-date">11/02/2016</div>
                         </div>
                     </div>
+
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/698ad73faec3d4e420cfc803/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/TOP 7 MEJORES S DE LOS VIDEOJUEGOS.jpg" alt="Vlog">
+                            <div class="video-duration">5:39</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">TOP 7 MEJORES CULOS DE LOS VIDEOJUEGOS</div>
+                            <div class="browse-video-date">17/02/2016</div>
+                        </div>
+                    </div>
+                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/698ad73faec3d4e420cfc801/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/NO TOMES DROGAS DECIAN.jpg" alt="Vlog">
+                            <div class="video-duration">13:59</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">NO TOMES DROGAS DECIAN | Far Cry Primal</div>
+                            <div class="browse-video-date">25/02/2016</div>
+                        </div>
+                    </div>
+                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/698ad69afc23d3d76fb55c9b/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/ME REVIENTAN LA CARA.jpg" alt="Vlog">
+                            <div class="video-duration">12:08</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">ME REVIENTAN LA CARA | UFC 2</div>
+                            <div class="browse-video-date">27/03/2016</div>
+                        </div>
+                    </div>
+                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/698ad69aaec3d4e420cfaca5/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/MI MAYOR ENFADO.jpg" alt="Vlog">
+                            <div class="video-duration">10:14</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">MI MAYOR ENFADO | Slither.io</div>
+                            <div class="browse-video-date">2/05/2016</div>
+                        </div>
+                    </div>
+                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/698ad4b9fc23d3d76fb515ac/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/ESTA NOCHE NO DUERMO.jpg" alt="Vlog">
+                            <div class="video-duration">8:51</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">ESTA NOCHE NO DUERMO </div>
+                            <div class="browse-video-date">9/06/2016</div>
+                        </div>
+                    </div>
+                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697eb5d8ffc582b7d2dbc1ea/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb">
+                            <img src="img/thumbnails/ABRIENDO LA PUERTA SECRETA Hello Neighbor.jpg" alt="Vlog">
+                            <div class="video-duration">11:59</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">ABRIENDO LA PUERTA SECRETA | Hello Neighbor #3</div>
+                            <div class="browse-video-date">7/11/2016</div>
+                        </div>
+                    </div>
+
                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697c70aae268a6ddefd9c545/', '_blank', 'width=1280,height=720')">
                         <div class="browse-video-thumb">
                             <img src="img/thumbnails/COCINANDO EBOLA PARA SENPAI.jpg" alt="Yandere">
@@ -1107,6 +1321,78 @@
                             <div class="browse-video-date">11/11/2016</div>
                         </div>
                     </div>
+                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697ea4825ff8d4ab5d289a76/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb"> 
+                            <img src="img/thumbnails/TE PUEDES SUICIDAR EN REALIDAD VIRTUAL.jpg" alt="HTC Vive">
+                            <div class="video-duration">8:04</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">TE PUEDES SUICIDAR EN REALIDAD VIRTUAL? (HTC Vive)</div>
+                            <div class="browse-video-date">17/01/2017</div>
+                        </div>
+                    </div>
+                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/698ae51eaec3d4e420d1b648/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb"> 
+                            <img src="img/thumbnails/LA CAJA LEGENDARIA 5.jpg" alt="HTC Vive">
+                            <div class="video-duration">11:27</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">LA CAJA LEGENDARIA 5</div>
+                            <div class="browse-video-date">20/02/2017</div>
+                        </div>
+                    </div>
+
+                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/698ae1e5873071aec5d87fc1/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb"> 
+                            <img src="img/thumbnails/MI HIJO ESTUPIDO HA VUELTO.jpg" alt="HTC Vive">
+                            <div class="video-duration">10:18</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">MI HIJO ESTUPIDO HA VUELTO | Guts and Glory</div>
+                            <div class="browse-video-date">1/03/2017</div>
+                        </div>
+                    </div>
+                    <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/698ae1e5aec3d4e420d145c1/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb"> 
+                            <img src="img/thumbnails/LA LEYENDA DE CRISTIANITO ES REAL.jpg" alt="HTC Vive">
+                            <div class="video-duration">8:16</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">LA LEYENDA DE CRISTIANITO ES REAL | Higher or Lower</div>
+                            <div class="browse-video-date">4/04/2017</div>
+                        </div>
+                    </div>
+                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/698d66dd010c771aa5d9d0ff/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb"> 
+                            <img src="img/thumbnails/BIENVENIDOS AL INFIERNO.jpg" alt="HTC Vive">
+                            <div class="video-duration">22:07</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">BIENVENIDOS AL INFIERNO | Outlast 2</div>
+                            <div class="browse-video-date">24/04/2017</div>
+                        </div>
+                    </div>
+                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/698ae6f3aec3d4e420d1f2a7/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb"> 
+                            <img src="img/thumbnails/NUEVO SETUP DE HABITACION Y ANUNCIO DE TV!.jpg" alt="HTC Vive">
+                            <div class="video-duration">13:05</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">NUEVO SETUP DE HABITACION Y ANUNCIO DE TV!</div>
+                            <div class="browse-video-date">30/04/2017</div>
+                        </div>
+                    </div>
+                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/698adf31aec3d4e420d0e312/', '_blank', 'width=1280,height=720')">
+                        <div class="browse-video-thumb"> 
+                            <img src="img/thumbnails/SEÑOR PRESIDENTE.jpg" alt="HTC Vive">
+                            <div class="video-duration">3:32</div>
+                        </div>
+                        <div class="browse-video-info">
+                            <div class="browse-video-title">SEÑOR PRESIDENTE - Cancion Remix elrubius (by Jaimillo) 2017</div>
+                            <div class="browse-video-date">11/05/2017</div>
+                        </div>
+                    </div>
+
                     <div class="browse-video-item" style="cursor: pointer;" onclick="window.open('https://gumlet.tv/watch/697d18e70c91682b77d7dbdf/', '_blank', 'width=1280,height=720')">
                         <div class="browse-video-thumb">
                             <img src="img/thumbnails/PORTERIA CHALLENGE by Rubius.jpg" alt="Porteria">
@@ -1171,8 +1457,8 @@
                                 Soy elrubius. Tengo 23,4 años. Me gustan los videojuegos, los dinosaurios y comer pan de pipas cuando nadie me esta mirando.
                             </div>
                             <div class="social-links">
-                                <a href="#" class="social-link" style="color: #00acee;">🐦 Twittah</a>
-                                <a href="#" class="social-link" style="color: #3b5998;">📘 Feisbuk</a>
+                                <a href="https://x.com/Rubiu5" target="_blank" class="social-link" style="color: #00acee;">🐦 Twittah</a>
+                                <a href="https://m.twitch.tv/rubius/home" target="_blank" class="social-link" style="color: #3b5998;">📘 Twitch</a>
                             </div>
                             <ul class="about-stats">
                                 <li><span>by elrubiusOMG</span></li>

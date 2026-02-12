@@ -110,6 +110,43 @@ document.querySelectorAll('.browse-subtab').forEach(subtab => {
     subtab.addEventListener('click', function() {
         document.querySelectorAll('.browse-subtab').forEach(t => t.classList.remove('active'));
         this.classList.add('active');
+        
+        const categoriesSection = document.querySelector('.categories-section');
+        const moreSection = document.querySelector('.more-section');
+        const commentsSection = document.querySelector('.comments-section');
+        const videosGrid = document.querySelector('.browse-videos-grid');
+        const tabText = this.textContent.trim();
+        
+        if (tabText === 'Playlists') {
+            // Mostrar categorías, ocultar lo demás
+            categoriesSection.style.display = 'block';
+            moreSection.style.display = 'none';
+            commentsSection.style.display = 'none';
+            videosGrid.style.display = 'none';
+            updateCategoryCounts();
+        } else if (tabText.startsWith('More')) {
+            // Mostrar sección More, ocultar lo demás
+            categoriesSection.style.display = 'none';
+            moreSection.style.display = 'block';
+            commentsSection.style.display = 'none';
+            videosGrid.style.display = 'none';
+        } else if (tabText === 'Comments') {
+            // Mostrar sección Comments, ocultar lo demás
+            categoriesSection.style.display = 'none';
+            moreSection.style.display = 'none';
+            commentsSection.style.display = 'block';
+            videosGrid.style.display = 'none';
+        } else {
+            // Mostrar videos, ocultar lo demás
+            categoriesSection.style.display = 'none';
+            moreSection.style.display = 'none';
+            commentsSection.style.display = 'none';
+            videosGrid.style.display = 'grid';
+            // Restaurar todos los videos si estaban filtrados
+            if (isFiltered) {
+                showAllVideos();
+            }
+        }
     });
 });
 
@@ -204,45 +241,14 @@ function updatePaginationButtons(totalPages) {
         paginationDiv.appendChild(prevBtn);
     }
     
-    // Si hay pocas páginas (7 o menos), mostrar todas
-    if (totalPages <= 7) {
-        for (let i = 1; i <= totalPages; i++) {
-            const btn = document.createElement('button');
-            btn.className = 'page-btn';
-            if (i === currentPage) btn.classList.add('active');
-            btn.textContent = i;
-            btn.onclick = () => changePage(i);
-            paginationDiv.appendChild(btn);
-        }
-    } else {
-        // Para muchas páginas, mostrar con puntos suspensivos
-        let lastShown = 0;
-        for (let i = 1; i <= totalPages; i++) {
-            let showButton = false;
-            
-            // Siempre mostrar primera página, última página, y páginas cercanas a la actual
-            if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
-                showButton = true;
-            }
-            
-            if (showButton) {
-                // Si hay gap, mostrar puntos suspensivos
-                if (lastShown > 0 && i > lastShown + 1) {
-                    const dots = document.createElement('span');
-                    dots.className = 'page-dots';
-                    dots.textContent = '...';
-                    paginationDiv.appendChild(dots);
-                }
-                
-                const btn = document.createElement('button');
-                btn.className = 'page-btn';
-                if (i === currentPage) btn.classList.add('active');
-                btn.textContent = i;
-                btn.onclick = () => changePage(i);
-                paginationDiv.appendChild(btn);
-                lastShown = i;
-            }
-        }
+    // Mostrar todas las páginas
+    for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.className = 'page-btn';
+        if (i === currentPage) btn.classList.add('active');
+        btn.textContent = i;
+        btn.onclick = () => changePage(i);
+        paginationDiv.appendChild(btn);
     }
     
     // Botón siguiente
@@ -406,6 +412,8 @@ function doSearch(term) {
 document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         initSearch();
+        assignVideoCategories();
+        setupCategoryFilters();
         // Guardar referencia a videos originales después de la inicialización
         setTimeout(() => {
             if (allVideos.length > 0 && originalVideos.length === 0) {
@@ -414,3 +422,206 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 200);
     }, 100);
 });
+
+// ===== Sistema de Categorías =====
+const videoCategories = {
+    "El Reto De La Canela Es Para Vagiinas": "CHALLENGE",
+    "After Effects - Desert Eagle First Test": "",
+    "100 MANERAS DE MATAR A JUSTIN BIEBER | Happy Wheels ep. 7 |": "GAYPLAYS",
+    "MEGAMIX | JUEGOS DE TERROR | Mejores sustos y partes GRASIOSAS": "THE BEST OF RUBIUS",
+    "Sims 3 | NUEVA CASA Y LIGANDO LIKE OLD TIMES | Gordo y Follador a los 40 | ep.12": "GAYPLAYS",
+    "SKYRIM NO ME QUIERE :'| Gameplay COD | 82 Moabs | PARTIDAZA!!! (NO)": "GAYPLAYS",
+    "CHATROULETTE | HOMBRES CON TETAAS Y MAS HAMIJOS Ep. 2": "CHATTROULETTE",
+    "Sims 3 | BARCOS Y BITCHES IN DA CITY | Gordo y Follador a los 40 | ep.13": "GAYPLAYS",
+    "Chatroulette | EL TROLL SIENDO TROLEADO Y NUEVOS HAMIJOS! | Ep. 3": "CHATTROULETTE",
+    "Haunt | SLENDER CON GRAFICAZOS Y CABALLOS EXCITADOS IN DA HOUSE": "GAYPLAYS",
+    "GTA IV | SPIDERMAN Y SU PERRO TIMMY IN THE CITY | w/ Mangel": "GAYPLAYS",
+    "Scribblenauts | NO LE TOQUES LAS PELOTAS A DIOS | Ep. 2": "GAYPLAYS",
+    "Chatroulette | ENSEÑANDO ESPAÑOL A GUIRIS Y TETAS EVERYWHERE | Ep. 5": "CHATTROULETTE",
+    "UN DIA NORMAL EN EL PARQUE": "VLOG",
+    "ULTRA MEGA TARTAS SUPER ESPECIAL | 2 MILLONES": "THE BEST OF RUBIUS",
+    "HAY QUE AMPUTAR! | Meet The Rubius": "THE BEST OF RUBIUS",
+    "LOS DIOSES DEL BAILE | Just Dance 2014 con HEMBRAS": "THE BEST OF RUBIUS,CHALLENGE",
+    "COCHES, INFECTADOS Y MOAR HEMBRAS | The Crew / The Division": "GAYPLAYS",
+    "SOY UN ABUSÓN... Y ME ENCANTA | Bully": "GAYPLAYS",
+    "SOY UN DINOSAURIO | Primal Carnage": "GAYPLAYS",
+    "LLORANDO COMO UNA NENA | Alone in The Rift": "GAYPLAYS",
+    "SOY LIBREEEE... A NO SER | Outlast | Ep. 5": "GAYPLAYS",
+    "LA CONSPIRACION DEL CLON | GTA V | RANDOM Online": "GAYPLAYS",
+    "MONTAJE ULTRAMIX TERROR 2013 | Especial Halloween": "THE BEST OF RUBIUS",
+    "TRES RETARDS EN LONDRES": "VLOG",
+    "Troll en Chatroulette | THE TROLL IS BACK": "CHATTROULETTE",
+    "SIMULADOR DE CABRA EXTREMA 2014": "GAYPLAYS",
+    "LA GRAN BUSQUEDA DE MI PENE": "GAYPLAYS",
+    "SIMULADOR DE NYAN CAT CABRA": "GAYPLAYS",
+    "INCOMODANDO A GENTE EN LA PIZZERIA | Camara Oculta": "VLOG,CHALLENGE",
+    "VICTORIA LEGENDARIA | JUEGOS DEL HAMBRE": "VLOG",
+    "EL PIANISTA QUE ESCAPÓ DE PEDOBEAR | GMOD RANDOM": "GAYPLAYS",
+    "HACKEANDO POR LA JUSTICIA! | Watch Dogs PS4": "THE BEST OF RUBIUS",
+    "EL LIBRO TROLL": "THE BEST OF RUBIUS",
+    "E3, EPIC LUCES, CHUCHES Y RANDOM | Epic Vlog LA Day 2": "THE BEST OF RUBIUS",
+    "LOS CAZA HIPSTERS | GTA V Random": "VLOG",
+    "GENTE RARA EN CHATROULETTE | Clasicos Animados": "CHATTROULETTE",
+    "LOS TEJONES SON MALAS MADRES | Shelter": "GAYPLAYS",
+    "50 COSAS SOBRE MI by Rubius": "THE BEST OF RUBIUS",
+    "LOS PILOTOS CIEGOS | GTA V Random": "GAYPLAYS",
+    "DESTROZANDO COCHES SUPER CAROS | BeamNG": "GAYPLAYS",
+    "EL ULTIMO PUZZLE SANGRIENTO | The Evil Within": "GAYPLAYS",
+    "MANERAS DE NO HACER UNA PRIMERA CITA": "THE BEST OF RUBIUS,CHALLENGE",
+    "REGALOS WTF, RAP BEYOND Y KIT ANTI-HATERS": "",
+    "ATRAPADO EN UN REALITY?": "THE BEST OF RUBIUS",
+    "TRES RETARDS EN AMSTERDAM": "VLOG",
+    "PIKABOSS ES DIOS": "THE BEST OF RUBIUS",
+    "RUMORES ESTUPIDOS SOBRE RUBIUS": "THE BEST OF RUBIUS",
+    "CADAVER EN EL COCHE | Camara Oculta": "THE BEST OF RUBIUS,CHALLENGE",
+    "MI ASISTENTA KAWAII | Random Apps": "",
+    "SALSEO EN ZOMBIE LAND | H1Z1 Random": "GAYPLAYS",
+    "COMO DESTROZAR A RUBIUS | Give Up 2": "GAYPLAYS",
+    "EL KOMBATE LEGENDARIO": "GAYPLAYS",
+    "NUEVAS MANERAS DE TROLEAR | Rust": "GAYPLAYS",
+    "EL NIVEL IMPOSIBLE DE SKRILLEX | Geometry Dash": "GAYPLAYS",
+    "Algo que necesitaba contaros.": "",
+    "POR MI NOVIO, MATO | Yandere Simulator": "GAYPLAYS",
+    "MATANDO DELANTE DE SENPAI | Yandere Simulator": "GAYPLAYS",
+    "ATAQUE DE TITANES | Yandere Simulator": "GAYPLAYS",
+    "MI XBOX ES RACISTA | Trollefono": "THE BEST OF RUBIUS",
+    "SALSEO EN LOS BAÑOS | Yandere Simulator": "GAYPLAYS",
+    "IRON MAN VS 1000 AVIONES | GTA V MODS": "GAYPLAYS",
+    "MI PERRO Y YO CONTRA EL MUNDO | MGSV": "GAYPLAYS",
+    "PLANTAS PIRAÑA AGRESIVAS | Super Mario Maker": "GAYPLAYS",
+    "LAS SALCHICHAS EPICAS": "THE BEST OF RUBIUS,CHALLENGE",
+    "REGALOS DE FANSES": "VLOG",
+    "CELEBRITIES - ELRUBIUS": "",
+    "EL NIÑO CALVO Y LA TARTA | Fallout 4 RANDOM": "GAYPLAYS",
+    "MI PEOR APUESTA": "THE BEST OF RUBIUS",
+    "RESCATANDO AL CALVO | Rainbow Six Siege": "GAYPLAYS",
+    "TENGO UN SUEÑO | Just Cause 3": "GAYPLAYS",
+    "ATRAPADO EN EL MISMO DIA PARA SIEMPRE | Garbage Day": "GAYPLAYS",
+    "DE FIESTA CON AMIGOS Y OLIVER HELDENS | Normal Vlog": "VLOG",
+    "TOP 7 MEJORES CULOS DE LOS VIDEOJUEGOS": "",
+    "NO TOMES DROGAS DECIAN | Far Cry Primal": "GAYPLAYS",
+    "ME REVIENTAN LA CARA | UFC 2": "GAYPLAYS",
+    "MI MAYOR ENFADO | Slither.io": "GAYPLAYS",
+    "COCINANDO EBOLA PARA SENPAI | Yandere Simulator": "GAYPLAYS",
+    "RUBIUS APRENDE A CONDUCIR": "VLOG",
+    "EL FACKIN BOSS DEL OVERWATCH": "THE BEST OF RUBIUS",
+    "ESTA NOCHE NO DUERMO :(": "GAYPLAYS",
+    "LA CAJA LEGENDARIA (Y TROLL) 4": "THE BEST OF RUBIUS",
+    "EL BAILE ZOMBIE | Just Dance 2017": "VLOG,CHALLENGE",
+    "NO ME CREO QUE ESTE JUGANDO A ESTO | Zelda Breath of The Wild": "GAYPLAYS",
+    "DOS TONTOS CAZAN POKEMON EN LA VIDA REAL - Pokemon GO": "THE BEST OF RUBIUS",
+    "REACCIONANDO A DIBUJOS DE SUSCRIPTORES": "",
+    "SUPER MARIO MAKER CHALLENGE #1": "CHALLENGE",
+    "SI TE RIES PIERDES CHALLENGE con Rubius": "CHALLENGE",
+    "ABRIENDO LA PUERTA SECRETA | Hello Neighbor #3": "GAYPLAYS",
+    "PELEAS ADORABLES | Gang Beasts (Momentos Divertidos)": "",
+    "TE PUEDES SUICIDAR EN REALIDAD VIRTUAL? (HTC Vive)": "GAYPLAYS",
+    "LA CAJA LEGENDARIA 5": "",
+    "UNA APUESTA ES UNA APUESTA": "CHALLENGE,THE BEST OF RUBIUS",
+    "MI HIJO ESTUPIDO HA VUELTO | Guts and Glory": "GAYPLAYS",
+    "LA LEYENDA DE CRISTIANITO ES REAL | Higher or Lower": "",
+    "BIENVENIDOS AL INFIERNO | Outlast 2": "",
+    "NUEVO SETUP DE HABITACION Y ANUNCIO DE TV!": "THE BEST OF RUBIUS",
+    "SEÑOR PRESIDENTE - Cancion Remix elrubius (by Jaimillo) 2017": "THE BEST OF RUBIUS",
+    "MI MAYOR APUESTA": "THE BEST OF RUBIUS,CHALLENGE",
+    "PORTERIA CHALLENGE by Rubius": "CHALLENGE,THE BEST OF RUBIUS",
+    "MIS SUBS ME ENVIAN CANCIONES TROLL | Momentos Rubius #1": "THE BEST OF RUBIUS",
+    "EL COMBATE LEGENDARIO Z": "GAYPLAYS",
+    "REACCIONANDO A ROBLOX": "THE BEST OF RUBIUS",
+    "EL MAYOR SORTEO DE LA HISTORIA DE YOUTUBE": "THE BEST OF RUBIUS"
+};
+
+function assignVideoCategories() {
+    const videoItems = document.querySelectorAll('.browse-video-item');
+    videoItems.forEach(item => {
+        const titleEl = item.querySelector('.browse-video-title');
+        if (titleEl) {
+            const title = titleEl.textContent.trim();
+            const category = videoCategories[title] || "";
+            item.setAttribute('data-category', category);
+        }
+    });
+}
+
+function updateCategoryCounts() {
+    const videoItems = document.querySelectorAll('.browse-video-item');
+    const counts = {
+        all: videoItems.length,
+        CHALLENGE: 0,
+        GAYPLAYS: 0,
+        'THE BEST OF RUBIUS': 0,
+        CHATTROULETTE: 0,
+        VLOG: 0
+    };
+    
+    videoItems.forEach(item => {
+        const categories = item.getAttribute('data-category');
+        if (categories) {
+            const cats = categories.split(',');
+            cats.forEach(cat => {
+                if (counts[cat] !== undefined) {
+                    counts[cat]++;
+                }
+            });
+        }
+    });
+    
+    document.querySelectorAll('.category-card').forEach(card => {
+        const category = card.getAttribute('data-category');
+        const countEl = card.querySelector('.category-count');
+        if (countEl) {
+            const count = category === 'all' ? counts.all : (counts[category] || 0);
+            countEl.textContent = `${count} videos`;
+        }
+    });
+}
+
+function setupCategoryFilters() {
+    document.querySelectorAll('.category-card').forEach(card => {
+        card.addEventListener('click', function() {
+            document.querySelectorAll('.category-card').forEach(c => c.classList.remove('active'));
+            this.classList.add('active');
+            
+            const category = this.getAttribute('data-category');
+            filterVideosByCategory(category);
+            
+            // Cambiar a tab Uploads y mostrar videos filtrados
+            document.querySelectorAll('.browse-subtab').forEach(t => t.classList.remove('active'));
+            document.querySelector('.browse-subtab').classList.add('active');
+            document.querySelector('.categories-section').style.display = 'none';
+            document.querySelector('.browse-videos-grid').style.display = 'grid';
+        });
+    });
+}
+
+function filterVideosByCategory(category) {
+    const videoItems = document.querySelectorAll('.browse-video-item');
+    
+    if (category === 'all') {
+        isFiltered = false;
+        allVideos = Array.from(videoItems);
+    } else {
+        isFiltered = true;
+        allVideos = Array.from(videoItems).filter(item => {
+            const categories = item.getAttribute('data-category');
+            if (!categories) return false;
+            return categories.split(',').includes(category);
+        });
+    }
+    
+    const totalPages = Math.ceil(allVideos.length / videosPerPage);
+    currentPage = 1;
+    updatePaginationButtons(totalPages);
+    showPage(1);
+}
+
+function showAllVideos() {
+    const videoItems = document.querySelectorAll('.browse-video-item');
+    allVideos = Array.from(videoItems);
+    isFiltered = false;
+    const totalPages = Math.ceil(allVideos.length / videosPerPage);
+    currentPage = 1;
+    updatePaginationButtons(totalPages);
+    showPage(1);
+}
+
