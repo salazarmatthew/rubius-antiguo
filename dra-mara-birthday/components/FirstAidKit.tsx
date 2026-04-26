@@ -144,32 +144,49 @@ export default function FirstAidKit() {
           <div className="flex justify-center mb-6">
             <div className="h-1 w-24 bg-gradient-to-r from-amber-300 to-rose-300 rounded-full" />
           </div>
-          <p className="text-base md:text-lg text-gray-700 font-light max-w-2xl mx-auto mb-12 leading-relaxed">
+          <p className="text-base md:text-lg text-gray-700 font-light max-w-2xl mx-auto mb-4 leading-relaxed">
             Para esos días largos de guardia o cuando la vocación pesa. Un remedio rápido para el alma.
+          </p>
+          <p className="text-xs md:text-sm text-gray-600 italic mb-12">
+            💡 Prueba presionando los botones varias veces para descubrir más mensajes
           </p>
 
           <div className="flex flex-col md:flex-row gap-3 md:gap-4 justify-center mb-12">
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={() => handleTabClick("hard-day")}
-              className={`flex items-center justify-center gap-2 px-4 md:px-8 py-3 md:py-5 rounded-xl md:rounded-2xl border-2 transition-all duration-300 font-semibold text-sm md:text-base cursor-pointer ${
+              className={`flex items-center justify-center gap-2 px-4 md:px-8 py-3 md:py-5 rounded-xl md:rounded-2xl border-2 transition-all duration-300 font-semibold text-sm md:text-base cursor-pointer relative group ${
                 activeTab === "hard-day"
                   ? "bg-rose-600 text-white border-rose-700 shadow-lg"
                   : "bg-white text-rose-600 border-rose-300 hover:border-rose-400 hover:shadow-md"
               }`}
             >
               <HeartPulse size={20} /> Para un día difícil
+              <motion.span
+                animate={activeTab === "hard-day" ? { rotate: 360 } : {}}
+                transition={{ duration: 0.5, repeat: activeTab === "hard-day" ? 0 : Infinity, repeatDelay: 2 }}
+                className="ml-1 text-xs opacity-70 group-hover:opacity-100"
+              >
+                🔄
+              </motion.span>
             </motion.button>
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={() => handleTabClick("laugh")}
-              className={`flex items-center justify-center gap-2 px-4 md:px-8 py-3 md:py-5 rounded-xl md:rounded-2xl border-2 transition-all duration-300 font-semibold text-sm md:text-base cursor-pointer ${
+              className={`flex items-center justify-center gap-2 px-4 md:px-8 py-3 md:py-5 rounded-xl md:rounded-2xl border-2 transition-all duration-300 font-semibold text-sm md:text-base cursor-pointer relative group ${
                 activeTab === "laugh"
                   ? "bg-amber-500 text-white border-amber-600 shadow-lg"
                   : "bg-white text-amber-600 border-amber-300 hover:border-amber-400 hover:shadow-md"
               }`}
             >
               <Smile size={20} /> Necesito reír
+              <motion.span
+                animate={activeTab === "laugh" ? { rotate: 360 } : {}}
+                transition={{ duration: 0.5, repeat: activeTab === "laugh" ? 0 : Infinity, repeatDelay: 2 }}
+                className="ml-1 text-xs opacity-70 group-hover:opacity-100"
+              >
+                🔄
+              </motion.span>
             </motion.button>
             <motion.button
               whileTap={{ scale: 0.95 }}
