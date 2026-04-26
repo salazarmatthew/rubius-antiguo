@@ -295,138 +295,56 @@ export default function Page() {
       {/* Galería de Recuerdos y Audios Ocultos */}
       <MemoryCollage />
 
-      {/* Carta Especial - Tributo Emotivo */}
-      <section className="relative py-16 md:py-24 px-4 overflow-hidden bg-gradient-to-b from-[#faf8f3] via-amber-50 to-[#faf8f3]">
-        {/* Animated background elements - más sutiles */}
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-          className="absolute top-0 right-0 w-64 md:w-80 h-64 md:h-80 bg-amber-200 rounded-full opacity-8 blur-3xl pointer-events-none"
-        />
+      <section className="bg-gradient-to-b from-[#faf8f3] to-[#f5f1e8] py-24 px-4 relative overflow-hidden">
         <motion.div
           animate={{ rotate: -360 }}
-          transition={{ duration: 70, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-0 left-0 w-64 md:w-80 h-64 md:h-80 bg-purple-200 rounded-full opacity-8 blur-3xl pointer-events-none"
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-amber-50 rounded-full opacity-40 blur-3xl pointer-events-none"
         />
 
-        <div className="max-w-3xl mx-auto relative z-10">
-          {/* Línea decorativa superior */}
+        <div className="max-w-4xl mx-auto relative z-10">
           <motion.div
-            initial={{ scaleX: 0, opacity: 0 }}
-            whileInView={{ scaleX: 1, opacity: 1 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
             viewport={{ once: true }}
-            className="h-1 w-24 mx-auto bg-gradient-to-r from-transparent via-amber-500 to-transparent rounded-full mb-8 origin-center"
-          />
-
-          {/* Título principal - más impactante */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-10"
+            className="text-center"
           >
-            <h2 className="text-3xl md:text-6xl font-serif font-bold text-gray-900 mb-2 leading-tight">
-              Gracias por ser tú
+            <div className="mb-8 flex justify-center gap-3">
+              <div className="h-1 w-12 bg-gradient-to-r from-purple-300 to-amber-300 rounded-full" />
+              <div className="h-1 w-2 bg-amber-400 rounded-full" />
+              <div className="h-1 w-12 bg-gradient-to-r from-amber-300 to-purple-300 rounded-full" />
+            </div>
+
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-8 leading-relaxed">
+              A veces me pregunto si eres consciente del{" "}
+              <span className="text-amber-700">espacio que llenas con solo existir</span>. No es solo cómo iluminas una habitación, sino la manera en que{" "}
+              <span className="text-purple-700">reconstruyes mi mundo</span> cada vez que sonríes.
             </h2>
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="text-xl md:text-3xl text-amber-800 italic font-light"
-            >
-              preciosa, extraordinaria mujer
-            </motion.p>
-          </motion.div>
 
-          {/* Carta - Diseño más elegante y compacto */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: true }}
-            className="relative bg-white/60 backdrop-blur-sm border border-amber-200/50 rounded-2xl p-8 md:p-10 shadow-xl mb-10 space-y-5"
-          >
-            {/* Comilla de apertura */}
-            <div className="text-6xl text-amber-300 opacity-30 font-serif leading-none">
-              "
-            </div>
+            <p className="text-lg md:text-xl text-gray-700 font-light leading-relaxed mb-12">
+              Tu presencia en nuestras vidas es un regalo invaluable. Con tu
+              sabiduria, tu paciencia y tu corazon inmenso, has dejado una marca
+              indeleble que perdurara para siempre.
+            </p>
 
-            {/* Contenido de la carta - más compacto */}
-            <div className="space-y-4 text-center md:text-left">
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                viewport={{ once: true }}
-                className="text-lg md:text-xl text-gray-800 font-light leading-relaxed"
-              >
-                A veces me pregunto si eres consciente del <span className="font-semibold text-amber-900">espacio que llenas con solo existir</span>. No es solo cómo iluminas una habitación, sino la manera en que <span className="italic text-purple-800">reconstruyes mi mundo</span> cada vez que sonríes.
-              </motion.p>
-
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
-                viewport={{ once: true }}
-                className="text-lg md:text-xl text-gray-800 font-light leading-relaxed"
-              >
-                Eres la mezcla perfecta de fuerza y ternura. Una mujer que no solo camina, sino que <span className="font-semibold underline decoration-purple-400 underline-offset-4">deja huella</span> en cada vida que toca, especialmente en la mía.
-              </motion.p>
-
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-                viewport={{ once: true }}
-                className="text-xl md:text-2xl font-serif text-gray-900 font-semibold pt-2"
-              >
-                Gracias por permitirme ser el <span className="text-purple-700">espectador de tu magia.</span>
-              </motion.p>
-            </div>
-
-            {/* Comilla de cierre */}
-            <div className="flex justify-end">
-              <div className="text-6xl text-amber-300 opacity-30 font-serif leading-none">
-                "
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Firma elegante */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
-            viewport={{ once: true }}
-            className="flex flex-col items-center gap-3"
-          >
-            <div className="w-16 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
-            <div className="text-center">
-              <p className="text-sm tracking-widest text-amber-800 font-semibold uppercase">
-                Con amor infinito
+            <div className="space-y-4">
+              <p className="text-2xl md:text-3xl font-serif text-amber-800 font-medium">
+                Todos te aman porque eres un faro de luz.
               </p>
-              <p className="text-2xl font-serif text-gray-900 font-bold mt-1">
-                Edwin
+              <p className="text-gray-600 font-light text-lg">
+                Con admiracion y carino infinito
               </p>
             </div>
-            <motion.div
-              animate={{ scale: [1, 1.2, 1], opacity: [0.4, 0.8, 0.4] }}
-              transition={{ duration: 4, repeat: Infinity }}
-              className="w-2 h-2 bg-gradient-to-r from-amber-400 to-purple-400 rounded-full"
-            />
-          </motion.div>
 
-          {/* Línea decorativa inferior */}
-          <motion.div
-            initial={{ scaleX: 0, opacity: 0 }}
-            whileInView={{ scaleX: 1, opacity: 1 }}
-            transition={{ duration: 1, delay: 1.2 }}
-            viewport={{ once: true }}
-            className="h-1 w-24 mx-auto bg-gradient-to-r from-transparent via-purple-400 to-transparent rounded-full mt-8 origin-center"
-          />
+            <div className="mt-12 flex justify-center">
+              <motion.div
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="w-2 h-2 bg-gradient-to-r from-amber-400 to-purple-400 rounded-full"
+              />
+            </div>
+          </motion.div>
         </div>
       </section>
 
